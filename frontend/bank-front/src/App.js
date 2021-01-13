@@ -1,15 +1,12 @@
 import React, { useState, useEffect} from 'react';
 import axios from 'axios';
-
+import {fetchUserProfiles} from './api';
 
 const UserProfile = () => {
-  const fetchUserProfiles = () => {
-    axios.get("http://localhost:8080/clients/5ffe54ddd0a1f67b5343fdf3").then( res => {
-      console.log(res)
-    })
-  }
   useEffect(() => {
-    fetchUserProfiles();
+    fetchUserProfiles().then(response => {
+      console.log(response.data);
+    }).catch(erro => console.log('error: ' + erro));
   }, [])
 
   return <h1>Hello</h1>;
