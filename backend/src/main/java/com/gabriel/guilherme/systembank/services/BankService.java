@@ -27,7 +27,6 @@ public class BankService implements IbankService {
 
 	@Override
 	public double amountAgency() {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 
