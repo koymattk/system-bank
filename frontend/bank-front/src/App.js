@@ -1,22 +1,31 @@
-import React, { useState, useEffect} from 'react';
-import axios from 'axios';
-import {fetchUserProfiles} from './api';
+import React, {useEffect, useState} from 'react';
+import {fetchUserProfiles} from '../src/Services/api';
+import CardsClients from '../src/Components/CardsClients/index'
 
-const UserProfile = () => {
-  useEffect(() => {
-    fetchUserProfiles().then(response => {
-      console.log(response.data);
-    }).catch(erro => console.log('error: ' + erro));
-  }, [])
 
-  return <h1>Hello</h1>;
-}
 
 
 function App() {
+
+  const[client, setClient] = useState([])
+  
+    useEffect(() => {
+      fetchUserProfiles().then(response => {
+        setClient(response.data);
+      }).catch(erro => console.log('error: ' + erro));
+    }, [])
+  
+
+
   return (
     <div >
-      <UserProfile />
+      
+      {
+        client.map(c => ( 
+          <CardsClients name={c.name}/>
+        ))
+      }
+      
     </div>
   );
 }

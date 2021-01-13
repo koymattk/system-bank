@@ -1,11 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import LoginPage from './Pages/LoginPage';
+import RegisterPage from './Pages/RegisterPage';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <>
+      <LoginPage/>
+    </>
   </React.StrictMode>,
   document.getElementById('root')
 );
