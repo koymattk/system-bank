@@ -1,11 +1,16 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import * as S from './Styles';
+import {fetchUserProfiles} from '../../Services/api'
+
+
+const [nome, setNome] = setNome('OLá');
+
 
 function Main () {
     return(
         <S.Container>
             <S.Text>
-            <span>BANK PIX</span>
+            <span>{nome}</span>
             </S.Text>
             <S.Inputs>
             <input type="text" placeholder="Conta" />
