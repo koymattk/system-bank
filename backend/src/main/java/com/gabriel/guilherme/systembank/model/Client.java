@@ -12,9 +12,9 @@ public class Client {
 	private String name;
 	private String rg;
 	private String cpf;
+	private String password;
 	private IsEmployer employer;
 	private List<Account> accounts;
-	
 	public Client() {
 		
 	}
@@ -49,6 +49,14 @@ public class Client {
 
 	public void setCpf(String cpf) {
 		this.cpf = cpf;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	public IsEmployer getEmployer() {
