@@ -1,6 +1,6 @@
 import * as S from './Styles';
 
-
+import {Link} from 'react-router-dom'
 
 
 function LoginPage () {
@@ -12,7 +12,9 @@ function LoginPage () {
             <S.Inputs>
                 <input type="text" placeholder="Conta" />
                 <input type="text" placeholder="Senha" />
-                <button>Login</button>
+                <button>
+                    <Link to="/registerpage">Teste</Link>
+                </button>
             </S.Inputs>
         </S.Container>
     )
