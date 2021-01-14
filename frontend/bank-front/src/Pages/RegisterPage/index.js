@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import {Link} from 'react-router-dom';
 import { postClient , validate } from '../../Services/api';
-import './style.css';
+import * as S from './styles'
 
 
 
@@ -19,14 +19,15 @@ function RegisterPage() {
 
     useEffect(()=>{
         if(client === undefined)
-            alert("Popule os campos abaixo para o Cadastro");
+           return null
         else
             postClient(client);
     },[client])
     
     return(
-        <form className="registerContainer">
-            <fieldset className="registerContent">
+        <S.Container>
+        <form>
+            <fieldset >
                 <legend>CADASTRO BANK</legend>
                 <label>Login</label>
                 <input value = {login} onChange={login => setLogin(login.target.value)} type="text" placeholder="Login Desejado" />
@@ -34,10 +35,10 @@ function RegisterPage() {
                 <input type="text" value = {email} placeholder="email" onChange={email => setEmail(email.target.value)}/>
                 <label>Senha</label>
                 <input value={password} onChange={password => setPassword(password.target.value)} type="password" placeholder="Senha" />
-                <label>Senha</label>
+                <label>Confirme a Senha</label>
                 <input value={cPassword} onChange={cPassword => setCPassword(cPassword.target.value)} type="password" placeholder="confirme sua senha" />
-                <label>nome</label>
-                <input type="text" value={name} placeholder="nome" onChange={name => setName(name.target.value)}/>
+                <label>Nome</label>
+                <input type="text" value={name} placeholder="Nome" onChange={name => setName(name.target.value)}/>
                 <label>Tell:</label>
                 <input type="text" value={tell} placeholder="telefone" onChange={tell => setTell(tell.target.value)} />
                 <label>CPF</label>
@@ -49,7 +50,7 @@ function RegisterPage() {
                     <option value={0} >Cliente</option>
                     <option value={1} >Empregador</option>
                 </select>
-                <button type="button" onClick={()=>{
+                <button onClick={()=>{
                     if(validate(login,password,cPassword,cpf,rg, tell, email)){
                         setClient({name,tell,login,email,rg,cpf,password,employer:clientType})
                         console.log(client);
@@ -62,6 +63,7 @@ function RegisterPage() {
                
             </fieldset>
         </form>
+        </S.Container>
     );
 }
 
