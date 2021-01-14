@@ -20,3 +20,7 @@ export const validate = (login,password,cPassword,cpf,rg, tell, email) => {
 export const postClient = (client) => {
     return axios.post("http://localhost:8080/clients", client);
 }
+
+export const attClient = () => {
+    return axios.put()
+}
