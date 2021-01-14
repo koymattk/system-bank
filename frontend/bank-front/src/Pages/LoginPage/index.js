@@ -3,7 +3,7 @@ import * as S from './Styles';
 import {Link} from 'react-router-dom'
 
 
-function LoginPage () {
+export default function LoginPage () {
     return(
         <S.Container>
             <S.Text>
@@ -14,10 +14,10 @@ function LoginPage () {
                 <input type="text" placeholder="Conta" />
                 <input type="text" placeholder="Senha" />
                 <button>
-                    <Link to="/homepage">LOGIN</Link>
+                    <Link to="/homepageclient">LOGIN</Link>
                 </button>
                 <button>
-                    <Link to="/registerpage">REGISTRAR</Link>
+                    <Link to="/homepage">REGISTRAR</Link>
                 </button>
             </S.Inputs>
         </S.Container>
@@ -25,4 +25,3 @@ function LoginPage () {
 }
 
 
-export default LoginPage;
