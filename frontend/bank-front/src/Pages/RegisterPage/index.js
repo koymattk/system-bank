@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
-import './style.css';
+import * as S from './styles';
 
-const RegisterPage = () => {
+ 
+export default function ()  {
     const[clientType, setClientType] = useState(0);
     return(
-        <form className="registerContainer">
-            <div className="registerContent">
+        <S.Container>
+        <form>
+            <div>
                 <label>Login</label>
                 <input type="text" placeholder="Login Desejado" />
                 <label>Senha</label>
@@ -21,10 +23,8 @@ const RegisterPage = () => {
                     <option value={0} key="">Cliente</option>
                     <option value={1} key="">Empregador</option>
                 </select>
-
             </div>
         </form>
+        </S.Container>
     );
 }
-
-export default RegisterPage;

@@ -1,15 +1,10 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-    margin-top: 20%;
-    
-`
-
-export const Text = styled.div`
-    justify-content: center;
-    align-items: center;
     display: flex;
-    padding: 2px;
+    align-items: center;
+    flex-direction: column;
+    border: 1px solid;
 `
 
 export const Inputs = styled.div`
@@ -23,11 +18,12 @@ export const Inputs = styled.div`
         margin: 5px;
         width: 200px;
     }
+`
+export const Buttons = styled.div`
+    margin: 10px;
+    flex-direction: row;
 
     button{
-        margin: 5px;
-        padding: 5px;
-        width: 200px;
+        margin: 10px;
     }
-
 `
