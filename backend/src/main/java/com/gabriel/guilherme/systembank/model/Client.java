@@ -10,6 +10,9 @@ public class Client {
 	@Id
 	private String id;
 	private String name;
+	private String tell;
+	private String login;
+	private String email;
 	private String rg;
 	private String cpf;
 	private String password;
@@ -33,6 +36,30 @@ public class Client {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public String getTell() {
+		return tell;
+	}
+
+	public void setTell(String tell) {
+		this.tell = tell;
+	}
+
+	public String getLogin() {
+		return login;
+	}
+
+	public void setLogin(String login) {
+		this.login = login;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public String getRg() {
