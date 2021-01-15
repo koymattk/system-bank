@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export const fetchUserProfiles = () => {
-    return axios.get("http://localhost:8080/clients");
+    return  axios.get("http://localhost:8080/clients");
 }
 
 export const validate = (login,password,cPassword,cpf,rg, tell, email) => {
@@ -24,3 +24,14 @@ export const postClient = (client) => {
 export const attClient = () => {
     return axios.put()
 }
+
+export const validateLogin = (clients, login, password) => {
+    const id = clients.filter(client => {
+        return (client.login === login && client.password === password);
+    })
+    if(id[0] === undefined){
+        return [false]
+    }
+    return [true, id[0].id]
+}
+

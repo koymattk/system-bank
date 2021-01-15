@@ -13,11 +13,11 @@ export default function Routes (){
         <BrowserRouter>
             <Switch>
                 <Route path="/" exact component={LoginPage} />
-                <Route path="/homepage" exact component={HomePage} />
+                <Route path="/homepage/:id" exact component={HomePage} />
                 <Route path="/registerpage" exact component={RegisterPage} />
                 <Route path="/transferpix" exact component={TransferPix} />
                 <Route path="/registerkeypix" exact component={RegisterKeyPix} />
-                <Route path="/homepageclient" exact component={HomePageClient} />
+                <Route path="/homepageclient/:id" exact component={HomePageClient} />
             </Switch>
         </BrowserRouter>
     )

@@ -19,9 +19,10 @@ function RegisterPage() {
 
     useEffect(()=>{
         if(client === undefined)
-           return null
+           return;
         else
             postClient(client);
+            alert('Cadastro Finalizado');
     },[client])
     
     return(
@@ -50,7 +51,7 @@ function RegisterPage() {
                     <option value={0} >Cliente</option>
                     <option value={1} >Empregador</option>
                 </select>
-                <button onClick={()=>{
+                <button type="button" onClick={()=>{
                     if(validate(login,password,cPassword,cpf,rg, tell, email)){
                         setClient({name,tell,login,email,rg,cpf,password,employer:clientType})
                         console.log(client);
