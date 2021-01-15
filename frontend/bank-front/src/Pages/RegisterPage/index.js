@@ -5,7 +5,7 @@ import * as S from './styles'
 
 
 
-function RegisterPage() {
+export default function RegisterPage() {
     const[clientType, setClientType] = useState(0);
     const[email, setEmail] = useState('');
     const[login, setLogin] = useState('');
@@ -68,4 +68,3 @@ function RegisterPage() {
     );
 }
 
-export default RegisterPage;
