@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom'
 import { useEffect, useState } from 'react';
 
 
-export default function LoginPage () {
+function LoginPage () {
     const [clients, setClients] = useState([]);
     const[login, setLogin] = useState('');
     const[password, setPassword] = useState('');
@@ -17,7 +17,7 @@ export default function LoginPage () {
         getUsersBank();
         console.log(clients);
 
-    },[validando])
+    },[])
     
     return(
         <S.Container>
@@ -29,20 +29,12 @@ export default function LoginPage () {
                 <input type="text" placeholder="login" value={login}  onChange={login =>setLogin(login.target.value)}/>
                 <input type="text" placeholder="Senha" value ={password} onChange={password => setPassword(password.target.value)}/>
                 <button type="button" onClick={()=>{
-                    console.log(validateLogin(clients,login,password));
+                    console.log(validateLogin(clients,login,password)[0]);
                 }}>
-                    <Link onClick={()=>{
-                       const validade = validateLogin(clients,login,password)
-                       if(validade[0] == true){
-                           setValidando(`/homepage/${validade[1]}`)
-                       }else{
-                           setValidando('/')
-                       }
-                        
-                    }} to={`${validando}`}>LOGIN</Link>
+                    <Link to={validateLogin(clients,login,password)[0] ? `/homepage/${validateLogin(clients,login,password)}`: '/' }>LOGIN</Link>
                 </button>
                 <button>
-                    <Link to="/homepage">REGISTRAR</Link>
+                    <Link to="/registerpage">REGISTRAR</Link>
                 </button>
             </S.Inputs>
         </S.Container>
@@ -50,3 +42,4 @@ export default function LoginPage () {
 }
 
 
+export default LoginPage;
