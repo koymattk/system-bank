@@ -29,9 +29,9 @@ function LoginPage () {
                 <input type="text" placeholder="login" value={login}  onChange={login =>setLogin(login.target.value)}/>
                 <input type="text" placeholder="Senha" value ={password} onChange={password => setPassword(password.target.value)}/>
                 <button type="button" onClick={()=>{
-                    console.log(validateLogin(clients,login,password)[0]);
+                    
                 }}>
-                    <Link to={validateLogin(clients,login,password)[0] ? `/homepage/${validateLogin(clients,login,password)}`: '/' }>LOGIN</Link>
+                    <Link to={validateLogin(clients,login,password)[0] ? `/homepage/${validateLogin(clients,login,password)[1]}`: '/' }>LOGIN</Link>
                 </button>
                 <button>
                     <Link to="/registerpage">REGISTRAR</Link>
