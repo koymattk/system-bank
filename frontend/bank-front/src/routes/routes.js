@@ -13,7 +13,7 @@ export default function Routes (){
     return(
         <BrowserRouter>
             <Switch>
-                <Route path="/" exact component={RegisterBank} />
+                <Route path="/" exact component={LoginPage} />
                 <Route path="/registerpage" exact component={RegisterPage} />
                 <Route path="/homepageclient/:id" exact component={HomePageClient} />
                 <Route path="/registerbank" exact component={RegisterBank} />
