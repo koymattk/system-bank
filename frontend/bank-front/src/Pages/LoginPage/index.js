@@ -31,7 +31,7 @@ function LoginPage () {
                 <button type="button" onClick={()=>{
                     
                 }}>
-                    <Link to={validateLogin(clients,login,password)[0] ? `/homepage/${validateLogin(clients,login,password)[1]}`: '/' }>LOGIN</Link>
+                    <Link to={validateLogin(clients,login,password)[0] ? `/homepageclient/${validateLogin(clients,login,password)[1]}`: '/' }>LOGIN</Link>
                 </button>
                 <button>
                     <Link to="/registerpage">REGISTRAR</Link>
