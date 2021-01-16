@@ -9,11 +9,9 @@ export default function RegisterKeyPix() {
                 <span>Digite a chave PIX deseja cadastrar</span>
                 <input type="text" placeholder="CHAVE" />
             </S.Inputs>
-            <S.Buttons>
-                <button>
-                    <Link to="/homepage">CONFIRMAR</Link>
-                </button>
-            </S.Buttons>
+            <S.Links>
+                    <Link to="/homepage"><span>CONFIRMAR</span></Link>
+            </S.Links>
         </S.Container>
     )
 }

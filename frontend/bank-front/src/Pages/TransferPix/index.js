@@ -11,11 +11,9 @@ export default function TransferPix() {
                 <span>Qual valor você deseja transferir</span>
                 <input type="text" placeholder="R$" />
             </S.Inputs>
-            <S.Buttons>
-                <button>
-                    <Link to="/homepage">CONFIRMAR</Link>
-                </button>
-            </S.Buttons>
+                <S.Links>
+                    <Link to="/homepage"><span>CONFIRMAR</span></Link>
+                </S.Links>
         </S.Container>
     )
 }

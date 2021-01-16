@@ -51,6 +51,7 @@ export default function RegisterPage() {
                     <option value={0} >Cliente</option>
                     <option value={1} >Empregador</option>
                 </select>
+
                 <button type="button" onClick={()=>{
                     if(validate(login,password,cPassword,cpf,rg, tell, email)){
                         setClient({name,tell,login,email,rg,cpf,password,employer:clientType})
@@ -59,8 +60,8 @@ export default function RegisterPage() {
                     else{
                         console.log("Dados invalidos");
                     }
-                }} >CADASTRAR</button>
-                <button><Link to="/">VOLTAR</Link></button>
+                }} ><span>CADASTRAR</span></button>
+                <S.Links><Link to="/"><span>VOLTAR</span></Link></S.Links>
                
             </fieldset>
         </form>

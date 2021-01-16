@@ -1,38 +1,27 @@
 import React from 'react';
-import './style.css';
+import * as S from './styles'
 import {Link} from 'react-router-dom'
-
+import CardBankClient from '../../Components/CardBankClient'
 
 export default function HomePageClient() {
 
     return(
-        <div className="containerHomePageClient">
-            <div className="contentHomePageClient">
-                <div className="cardHomePageClient">
-                        <h2>Nubank</h2>
-                        <button type="button"><Link to="/homepage">ENTRA NA CONTA</Link></button>
-                        <button type="button"><Link>CRIAR CONTA</Link></button>
-
+        <S.ContainerHomePageClient>
+            <S.ContentHomePageClient>
+                <div>
+                    <CardBankClient bank="Nubank"/>
                 </div>
-                <div className="cardHomePageClient">
-                        <h2>Bradesco</h2>
-                        <button type="button"><Link to="/homepage">ENTRA NA CONTA</Link></button>
-                        <button type="button"><Link>CRIAR CONTA</Link></button>
+                <div>
+                    <CardBankClient bank="Bradesco"/>
                 </div>
-                <div className="cardHomePageClient">
-                    <h2>Bs2</h2>
-                    <button type="button"><Link to="/homepage" >ENTRA NA CONTA</Link></button>
-                    <button type="button"><Link>CRIAR CONTA</Link></button>
-
+                <div>
+                    <CardBankClient bank="Bs2"/>
                 </div>
-                <div className="cardHomePageClient">
-                    <h2>Inter</h2>
-                    <button type="button"><Link to="/homepage">ENTRA NA CONTA</Link></button>
-                    <button type="button"><Link>CRIAR CONTA</Link></button>
-
+                <div>
+                    <CardBankClient bank="Banco Inter"/>
                 </div>
-            </div>
-        </div>
+            </S.ContentHomePageClient>
+        </S.ContainerHomePageClient>
     );
 
 }

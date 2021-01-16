@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom'
 import { useEffect, useState } from 'react';
 
 
-function LoginPage () {
+export default function LoginPage () {
     const [clients, setClients] = useState([]);
     const[login, setLogin] = useState('');
     const[password, setPassword] = useState('');
@@ -28,18 +28,19 @@ function LoginPage () {
             <S.Inputs>
                 <input type="text" placeholder="login" value={login}  onChange={login =>setLogin(login.target.value)}/>
                 <input type="text" placeholder="Senha" value ={password} onChange={password => setPassword(password.target.value)}/>
-                <button type="button" onClick={()=>{
-                    
-                }}>
-                    <Link to={validateLogin(clients,login,password)[0] ? `/homepageclient/${validateLogin(clients,login,password)[1]}`: '/' }>LOGIN</Link>
-                </button>
-                <button>
-                    <Link to="/registerpage">REGISTRAR</Link>
-                </button>
+                <S.Links>
+                    <Link to={validateLogin(clients,login,password)[0] ? `/homepageclient/${validateLogin(clients,login,password)[1]}`: '/' }>
+                        <span>LOGIN</span>
+                    </Link>
+                </S.Links>
+                <S.Links>
+                    <Link to="/registerpage">
+                        <span>REGISTRAR</span>
+                    </Link>
+                </S.Links>
             </S.Inputs>
         </S.Container>
     )
 }
 
 
-export default LoginPage;

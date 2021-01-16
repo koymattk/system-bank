@@ -23,11 +23,21 @@ export const Saldo = styled.div`
     border-radius: 3px;
     padding: 10px;
 `
-export const Buttons = styled.div`
-    margin: 10px;
-    flex-direction: row;
+export const Links = styled.div`
+    margin: 5px;
+    padding: 5px;
+    width: 200px;
+    border: 0.5px solid black;
+    border-radius: 10px;
+    font-size: 10px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    background-color: #273c75;
 
-    button{
-        margin: 10px;
+    span {
+        color: #f5f6fa;
+        font-weight: bold;
     }
+
 `

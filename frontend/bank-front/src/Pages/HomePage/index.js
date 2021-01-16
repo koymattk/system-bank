@@ -24,14 +24,12 @@ export default function HomePage(){
                     R$ 4.000,00
                 </span>
             </S.Saldo>
-            <S.Buttons>
-            <button>
-                    <Link to="/transferpix">TRANSFERIR</Link>
-            </button>
-            <button>
-                    <Link to="/registerkeypix">CADASTRAR PIX</Link>
-            </button>
-            </S.Buttons>
+            <S.Links>
+                    <Link to="/transferpix"><span>TRANSFERIR</span></Link>
+            </S.Links>
+            <S.Links>
+                    <Link to="/registerkeypix"><span>CADASTRAR PIX</span></Link>
+            </S.Links>
         </S.Container>
     )
 }
