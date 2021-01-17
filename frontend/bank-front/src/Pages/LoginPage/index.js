@@ -1,23 +1,23 @@
 import * as S from './Styles';
-import { fetchUserProfiles, validateLogin } from '../../Services/api';
+import { validateLogin ,validateId} from '../../Services/api';
 import {Link} from 'react-router-dom'
-import { useEffect, useState } from 'react';
+import { useState, useEffect } from 'react';
 
 
 export default function LoginPage () {
-    const [clients, setClients] = useState([]);
+    
     const[login, setLogin] = useState('');
     const[password, setPassword] = useState('');
-    const[validando, setValidando] = useState('');
+    const[id,setID] = useState('');
     useEffect(()=>{
-
-        const getUsersBank = async () => {
-            await fetchUserProfiles().then(res =>setClients(res.data));
+        const validar = async () =>{
+           const id = await validateLogin(login,password)
+           setID(id);
+           console.log(id)
         }
-        getUsersBank();
-        console.log(clients);
+        validar()
 
-    },[])
+    },[login,password])
     
     return(
         <S.Container>
@@ -29,9 +29,9 @@ export default function LoginPage () {
                 <input type="text" placeholder="login" value={login}  onChange={login =>setLogin(login.target.value)}/>
                 <input type="text" placeholder="Senha" value ={password} onChange={password => setPassword(password.target.value)}/>
                 <S.Links>
-                    <Link to={validateLogin(clients,login,password)[0] ? `/homepageclient/${validateLogin(clients,login,password)[1]}`: '/' }>
+                    <Link to={validateId(id) ?`/homepageclient/${id}`: '/' }>
                         <span>LOGIN</span>
-                    </Link>
+                    </Link>                   
                 </S.Links>
                 <S.Links>
                     <Link to="/registerpage">
