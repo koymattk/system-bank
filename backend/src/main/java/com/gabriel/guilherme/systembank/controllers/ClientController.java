@@ -32,6 +32,10 @@ public class ClientController {
 	public Client findById(@PathVariable String id) {
 		return service.findById(id);
 	}
+	@GetMapping("/authentication/{login}/{password}")
+	public String authentication(@PathVariable String login, @PathVariable String password) {
+		return service.aut(login, password);
+	}
 	@PostMapping
 	public Client created(@RequestBody Client client) {
 		return service.created(client);

@@ -13,4 +13,6 @@ public interface IclientService {
 	Client created(Client client);
 	
 	Client update(Client client);
+
+	String aut(String login, String password);
 }
