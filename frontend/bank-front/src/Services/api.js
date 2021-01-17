@@ -25,6 +25,11 @@ export const attClient = () => {
     return axios.put()
 }
 
+export const getClient = async (id) => {
+    const client = (await axios.get(`http://localhost:8080/clients/${id}`)).data
+    return client;
+}
+
 
 export const validateLogin = async (login, password) => {
    if(login === '' || password === ''){
