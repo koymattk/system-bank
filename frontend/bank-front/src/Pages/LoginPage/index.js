@@ -13,7 +13,6 @@ export default function LoginPage () {
         const validar = async () =>{
            const id = await validateLogin(login,password)
            setID(id);
-           console.log(id)
         }
         validar()
 
@@ -39,6 +38,7 @@ export default function LoginPage () {
                     </Link>
                 </S.Links>
             </S.Inputs>
+            <button onClick={()=>{validateLogin(login,password)}} type="button">aaaaaa</button>
         </S.Container>
     )
 }

@@ -3,7 +3,6 @@ import * as S from './styles'
 import CardBankClient from '../../Components/CardBankClient'
 
 export default function HomePageClient() {
-
     return(
         <S.ContainerHomePageClient>
             <S.ContentHomePageClient>

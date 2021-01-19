@@ -21,8 +21,8 @@ export const postClient = (client) => {
     return axios.post("http://localhost:8080/clients", client);
 }
 
-export const attClient = () => {
-    return axios.put()
+export const attClient = (client) => {
+    return axios.put("http://localhost:8080/clients", client)
 }
 
 export const getClient = async (id) => {
@@ -36,8 +36,10 @@ export const validateLogin = async (login, password) => {
         console.log('dados vazios')
         return null;
    } 
-   const dados = (await axios.get(`http://localhost:8080/clients/authentication/${login}/${password}`)).data
-   return dados; 
+   const loginPassord = {login,password}
+   const dados = await (await axios.post('http://localhost:8080/clients/login',loginPassord)).data;
+   return dados;
+     
 }
 
 export const validateId = (id) =>{
