@@ -19,8 +19,8 @@ export const NameClient = styled.div`
 
 export const Saldo = styled.div`
     font-size: 15px; 
-    border: 1px solid;
-    border-radius: 3px;
+    border: 1px solid #273c75; 
+    border-radius: 10px;
     padding: 10px;
 `
 export const Links = styled.div`
