@@ -4,7 +4,6 @@ export const Container = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 1px solid #000;
     width: 720px;
     margin: 0 auto;
 
@@ -15,6 +14,8 @@ export const Container = styled.div`
     display: flex;
     padding: 10px;
     width: 200px;
+    border: 1px solid #273c75; 
+    border-radius: 10px;
     }
 
     select{

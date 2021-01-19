@@ -18,10 +18,13 @@ export const Inputs = styled.div`
     align-items: center;
     display: flex;
     
+
     input {
         padding: 5px;
         margin: 5px;
         width: 200px;
+        border: 1px solid #273c75; 
+        border-radius: 10px;
     }
 `
 export const Links = styled.div`
