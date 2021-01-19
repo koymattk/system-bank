@@ -34,11 +34,13 @@ public class ClientService implements IclientService  {
 		return repository.save(client);		
 	}
 	@Override
-	public String aut(String login, String password){
+	public String aut(Client cleint){
 		List<Client> clients = repository.findAll();
 		for(Client user : clients){
-			if(user.getLogin().equals(login) && user.getPassword().equals(password))
+			if(cleint.getLogin().equals(user.getLogin()) && cleint.getPassword().equals(user.getPassword())){
 				return user.getId();
+			}
+				
 		}
 		return "null";
 		
