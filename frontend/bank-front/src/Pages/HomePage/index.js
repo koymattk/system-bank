@@ -1,35 +1,33 @@
-import React from 'react';
-import * as S from './styles'
-import {Link} from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import HomePageC from './HomePageC';
+import { getClient } from '../../Services/api';
+import { useParams } from 'react-router-dom';
+import { filterList } from '../../Services/api';
 
-
-export default function HomePage(){
+ 
+export default function HomePage() {
+    const {id, bank} = useParams();
+    const[accounts, setAccount] = useState([])
+    
+    useEffect(()=>{
+        
+      
+        getClient(id).then(res=>setAccount(res.accounts));
+         
+        
+        
+       
+        console.log('oi')
+        
+    },[])
     return(
-        <S.Container>
-            <S.Bank>
-                <span>
-                    Nubank
-                </span>
-            </S.Bank>
-            <S.NameClient>
-                <span>
-                    Guilherme 
-                </span>
-            </S.NameClient>
-            <span>
-                SALDO
-            </span>
-            <S.Saldo>
-                <span>
-                    R$ 4.000,00
-                </span>
-            </S.Saldo>
-            <S.Links>
-                    <Link to="/transferpix"><span>TRANSFERIR</span></Link>
-            </S.Links>
-            <S.Links>
-                    <Link to="/registerkeypix"><span>CADASTRAR PIX</span></Link>
-            </S.Links>
-        </S.Container>
+      
+        <>
+          <button type="button" onClick={()=>{console.log(accounts)}}>AAAA</button>
+          {accounts.map(account => {
+            return account.banks[0].bankName === bank ? <HomePageC balance={account.balance}typeAccount={account.typeAccount} bank={account.banks[0].bankName}/> : <></>
+          })}
+        </>
+        
     )
 }

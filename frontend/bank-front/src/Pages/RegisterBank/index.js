@@ -42,6 +42,7 @@ export default function RegisterBank(){
                     tell:client.tell,
                     accounts:[...client.accounts,
                         {
+                            id:id,
                             typeAccount:typeAccount,
                             agency:"001",
                             balance:balance,

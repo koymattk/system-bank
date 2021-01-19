@@ -17,7 +17,7 @@ export default function Routes (){
                 <Route path="/registerpage" exact component={RegisterPage} />
                 <Route path="/homepageclient/:id" exact component={HomePageClient} />
                 <Route path="/registerbank/:bank/:id" exact component={RegisterBank} />
-                <Route path="/homepage/:id" exact component={HomePage} />                
+                <Route path="/homepage/:id/:bank" exact component={HomePage} />                
                 <Route path="/transferpix" exact component={TransferPix} />
                 <Route path="/registerkeypix" exact component={RegisterKeyPix} />
             </Switch>
