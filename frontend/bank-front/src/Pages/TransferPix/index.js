@@ -1,8 +1,15 @@
-import React from 'react';
+import React, {useState} from 'react';
 import * as S from './styles';
 import {Link} from 'react-router-dom'
+import CardConfirm from '../../Components/CardConfirm'
+
 
 export default function TransferPix() {
+
+    const[nome, setNome]=useState("Guilherme")
+    const[bank, setBank]=useState("Nubank")
+    const[value, setValue]=useState("R$ 120,00")
+    
     return(
         <S.Container>
             <S.Inputs>
@@ -12,8 +19,9 @@ export default function TransferPix() {
                 <input type="text" placeholder="R$" />
             </S.Inputs>
                 <S.Links>
-                    <Link to="/homepage"><span>CONFIRMAR</span></Link>
+                    <Link to="/homepage"><span>VERIFICAR</span></Link>
                 </S.Links>
+                <CardConfirm nome={nome} bank={bank} value={value}/>
         </S.Container>
     )
 }
