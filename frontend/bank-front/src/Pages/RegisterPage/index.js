@@ -54,7 +54,7 @@ export default function RegisterPage() {
 
                 <button type="button" onClick={()=>{
                     if(validate(login,password,cPassword,cpf,rg, tell, email)){
-                        setClient({name,tell,login,email,rg,cpf,password,employer:clientType})
+                        setClient({name,tell,login,email,rg,cpf,password,employer:clientType,accounts:[]})
                         console.log(client);
                     }
                     else{

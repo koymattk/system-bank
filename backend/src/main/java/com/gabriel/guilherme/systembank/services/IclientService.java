@@ -14,5 +14,5 @@ public interface IclientService {
 	
 	Client update(Client client);
 
-	String aut(String login, String password);
+	String aut(Client client);
 }

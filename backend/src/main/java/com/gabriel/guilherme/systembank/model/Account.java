@@ -8,6 +8,7 @@ public class Account implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	private String typeAccount;
+	private String keyTrans;
 	private String agency;
 	private double balance;
 	private List<Bank> banks;
@@ -22,9 +23,15 @@ public class Account implements Serializable {
 		this.balance = balance; 
 	}
 
-
 	public String getTypeAccount() {
 		return typeAccount;
+	}
+	public String getKeyTrans() {
+		return keyTrans;
+	}
+
+	public void setKeyTrans(String keyTrans) {
+		this.keyTrans = keyTrans;
 	}
 
 	public void setTypeAccount(String typeAccount) {
