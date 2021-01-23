@@ -21,8 +21,8 @@ export const postClient = (client) => {
     return axios.post("http://localhost:8080/clients", client);
 }
 
-export const attClient = (client) => {
-    return axios.put("http://localhost:8080/clients", client)
+export const createAccount = (clientId, account) => {
+    return axios.put(`http://localhost:8080/clients/${clientId}`, account)
 }
 
 export const getClient = async (id) => {
@@ -47,4 +47,12 @@ export const validateId = (id) =>{
         return false;
     else
         return true;
+}
+
+export const createPix = () => {
+    return axios.get('http://localhost:8080/account/createpix');
+}
+
+export const registerKeyPix = (clientId, index, keypix) => {
+    return axios.put(`http://localhost:8080/account/${clientId}/${index}`, keypix)
 }
