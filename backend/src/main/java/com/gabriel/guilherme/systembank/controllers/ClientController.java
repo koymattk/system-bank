@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.gabriel.guilherme.systembank.model.Account;
 import com.gabriel.guilherme.systembank.model.Client;
 import com.gabriel.guilherme.systembank.services.ClientService;
 
@@ -41,10 +42,9 @@ public class ClientController {
 		return service.created(client);
 	}
 	
-	@PutMapping()
-	public Client updateClient(@RequestBody Client client) {
-		
-		return service.update(client);
+	@PutMapping("/{clientId}")
+	public Client createAccount(@PathVariable String clientId, @RequestBody Account account) {
+		return service.createAccount(clientId, account);
 		
 	}
 }
