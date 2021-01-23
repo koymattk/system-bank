@@ -2,6 +2,7 @@ package com.gabriel.guilherme.systembank.model;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.ArrayList;
 
 
 public class Account implements Serializable {
@@ -12,7 +13,7 @@ public class Account implements Serializable {
 	private String agency;
 	private double balance;
 	private List<Bank> banks;
-	private List<KeyPix> keys;
+	private List<KeyPix> keys = new ArrayList<KeyPix>();
 	
 	public Account() {
 		

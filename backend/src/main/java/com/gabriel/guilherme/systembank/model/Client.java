@@ -1,5 +1,7 @@
 package com.gabriel.guilherme.systembank.model;
 import java.util.List;
+import java.util.ArrayList;
+
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -17,7 +19,7 @@ public class Client {
 	private String cpf;
 	private String password;
 	private IsEmployer employer;
-	private List<Account> accounts;
+	private List<Account> accounts = new ArrayList<Account>();;
 	public Client() {
 		
 	}
@@ -96,6 +98,9 @@ public class Client {
 
 	public List<Account> getAccounts() {
 		return accounts;
+	}
+	public void setAccounts(List<Account> accounts) {
+		this.accounts = accounts;
 	}
 	
 	
