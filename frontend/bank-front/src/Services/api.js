@@ -56,3 +56,8 @@ export const createPix = () => {
 export const registerKeyPix = (clientId, index, keypix) => {
     return axios.put(`http://localhost:8080/account/${clientId}/${index}`, keypix)
 }
+
+export const agency = () =>{
+    const agencys = ['0001','0002','0003'];
+    return agencys[Math.floor(Math.random() * 3)];
+}
