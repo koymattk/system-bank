@@ -8,6 +8,7 @@ class SystemBankApplicationTests {
 
 	@Test
 	void contextLoads() {
+		
 	}
 
 }

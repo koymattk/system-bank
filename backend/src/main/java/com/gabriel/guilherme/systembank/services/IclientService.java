@@ -2,6 +2,7 @@ package com.gabriel.guilherme.systembank.services;
 
 import java.util.List;
 
+import com.gabriel.guilherme.systembank.model.Account;
 import com.gabriel.guilherme.systembank.model.Client;
 
 public interface IclientService {
@@ -12,7 +13,7 @@ public interface IclientService {
 	
 	Client created(Client client);
 	
-	Client update(Client client);
+	Client createAccount(String clientID, Account account);
 
 	String aut(Client client);
 }

@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.gabriel.guilherme.systembank.model.Account;
 import com.gabriel.guilherme.systembank.model.Client;
 import com.gabriel.guilherme.systembank.repositories.ClientRepository;
 
@@ -30,7 +31,10 @@ public class ClientService implements IclientService  {
 	}
 
 	@Override
-	public Client update(Client client) {
+	public Client createAccount(String clientId, Account account) {
+		Client client = repository.findById(clientId)
+		.orElseThrow(()-> new IllegalArgumentException("Client not found"));
+		client.getAccounts().add(account);
 		return repository.save(client);		
 	}
 	@Override
