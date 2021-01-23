@@ -1,15 +1,15 @@
 import React,{useEffect, useState} from 'react';
 import * as S from './styles'
 import {Link, useParams} from 'react-router-dom';
-import { getClient, attClient } from '../../Services/api';
+import { getClient, createAccount } from '../../Services/api';
 
 export default function RegisterBank(){
     const { id , bank } = useParams();
     const[client, setClient] = useState({});
-    const[typeAccount, setTypeAccount] = useState('corrente ');
+    const[typeAccount, setTypeAccount] = useState('corrente');
     const[balance, setBalance] = useState(0)
     useEffect(()=>{
-        getClient(id).then(res=>setClient(res))
+        
         
     },[])
     return(
@@ -29,29 +29,13 @@ export default function RegisterBank(){
                     </Link>
             </S.Links>
             <button type="button" onClick={()=>{
-                console.log(client);
-                attClient({
-                    cpf:client.cpf,
-                    email:client.email,
-                    employer:client.employer,
-                    id:id,
-                    login:client.login,
-                    name:client.name,
-                    password:client.password,
-                    rg:client.rg,
-                    tell:client.tell,
-                    accounts:[...client.accounts,
+                createAccount(id,{
+                    typeAccount,
+                    balance,
+                    banks:[
                         {
-                            id:id,
-                            typeAccount:typeAccount,
-                            agency:"001",
-                            balance:balance,
-                            banks:[
-                                {
-                                    bankName:bank,
-                                    numberBank:"218"
-                                }
-                            ]
+                            bankName:bank,
+                            numberBank:'218'
                         }
                     ]
                 })

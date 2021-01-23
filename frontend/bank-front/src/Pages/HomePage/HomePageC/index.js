@@ -4,7 +4,7 @@ import {Link, useParams} from 'react-router-dom';
 import { getClient } from '../../../Services/api';
 
 
-export default function HomePageC({balance, typeAccount,bank}){
+export default function HomePageC({balance, typeAccount,bank, index}){
     const { id } = useParams();
     const[client, setClient] = useState({})
     useEffect(()=>{
@@ -35,7 +35,7 @@ export default function HomePageC({balance, typeAccount,bank}){
                     <Link to="/transferpix"><span>TRANSFERIR</span></Link>
             </S.Links>
             <S.Links>
-                    <Link to="/registerkeypix"><span>CADASTRAR PIX</span></Link>
+                    <Link to={`/registerkeypix/${id}/${index}`}><span>CADASTRAR PIX</span></Link>
             </S.Links>
         </S.Container>
     )

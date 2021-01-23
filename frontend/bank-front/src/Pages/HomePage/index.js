@@ -2,9 +2,6 @@ import React, { useEffect, useState } from 'react';
 import HomePageC from './HomePageC';
 import { getClient } from '../../Services/api';
 import { useParams } from 'react-router-dom';
-import { filterList } from '../../Services/api';
-
- 
 export default function HomePage() {
     const {id, bank} = useParams();
     const[accounts, setAccount] = useState([])
@@ -24,9 +21,11 @@ export default function HomePage() {
       
         <>
           <button type="button" onClick={()=>{console.log(accounts)}}>AAAA</button>
-          {accounts.map(account => {
-            return account.banks[0].bankName === bank ? <HomePageC balance={account.balance}typeAccount={account.typeAccount} bank={account.banks[0].bankName}/> : <></>
-          })}
+          {
+            accounts.map(account => {
+            return account.banks[0].bankName === bank ? <HomePageC index={accounts.indexOf(account)} balance={account.balance}typeAccount={account.typeAccount} bank={account.banks[0].bankName}/> : <></>
+            })
+          }
         </>
         
     )
