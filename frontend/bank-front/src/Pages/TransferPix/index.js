@@ -6,16 +6,19 @@ import CardConfirm from '../../Components/CardConfirm'
 
 export default function TransferPix() {
 
-    const[nome, setNome]=useState("Guilherme")
-    const[bank, setBank]=useState("Nubank")
-    const[value, setValue]=useState("R$ 120,00")
+    const[nome, setNome]=useState('');
+    const[bank, setBank]=useState('');
+    const[value, setValue]=useState('');
+    const[passTrans, setPassTrans] = useState('')
     
     return(
         <S.Container>
             <S.Inputs>
-                <span>Digite a chave PIX para qual deseja transferir</span>
+                <label>Digite a chave PIX para qual deseja transferir</label>
                 <input type="text" placeholder="CHAVE" />
-                <span>Qual valor você deseja transferir</span>
+                <label>Digite sua senha de transferencia</label>
+                <input type="password" placeholder='senha de tranferencia' value={passTrans} onChange={pass => setPassTrans(pass.target.value)}  />
+                <label>Qual valor você deseja transferir</label>
                 <input type="text" placeholder="R$" />
             </S.Inputs>
                 <S.Links>
