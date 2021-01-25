@@ -28,9 +28,13 @@ public class AccountController {
         
         return service.registerKeyPix(clientId, index, keypix);
     }
-    @PostMapping(value="/transferpix/{clientId}/{keyTrans}/{keyPix}/{value}")
+    @PutMapping(value="/transferpix/{clientId}/{keyTrans}/{keyPix}/{value}")
     public Double transferPix(@PathVariable String clientId, @PathVariable String keyTrans, @PathVariable String keyPix, @PathVariable Double value){
         return  service.transferPix(clientId, keyTrans, keyPix, value);
+    }
+    @GetMapping("/{keyPix}")
+    public Client getAccountPix(@PathVariable String keyPix){
+        return service.getAccountPix(keyPix);
     }
 }
 

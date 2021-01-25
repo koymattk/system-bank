@@ -77,7 +77,17 @@ public class AccountService implements IaccountService {
         return 0.0;
     }
     public Client getAccountPix(String keyPix){
-        
+        List<Client> clients = repository.findAll();
+        for (Client client : clients) {
+            for (Account account : client.getAccounts()) {
+                for (KeyPix key : account.getKeys()) {
+                    if(key.getKeypix().equals(keyPix)){
+                        return client;
+                    }
+                }
+            }
+        }
+        return null;
     }
 
 
