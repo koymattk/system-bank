@@ -6,6 +6,9 @@ public class Data {
     private String cpf;
     private String nameBank;
     private String date;
+    private String typeAccount;
+    private String numberAccount;
+    private String agency;
 
     public Data(){
 
@@ -34,5 +37,23 @@ public class Data {
     }
     public void setDate(String date) {
         this.date = date;
+    }
+    public String getTypeAccount() {
+        return typeAccount;
+    }
+    public void setTypeAccount(String typeAccount) {
+        this.typeAccount = typeAccount;
+    }
+    public String getNumberAccount() {
+        return numberAccount;
+    }
+    public void setNumberAccount(String numberAccount) {
+        this.numberAccount = numberAccount;
+    }
+    public String getAgency() {
+        return agency;
+    }
+    public void setAgency(String agency) {
+        this.agency = agency;
     }
 }

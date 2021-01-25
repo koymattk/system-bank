@@ -30,7 +30,7 @@ export default function TransferPix() {
                 <button type='button' onClick={()=>{
                    console.log(dataClient)
                 }}>Tranferir</button>
-                <CardConfirm nome={dataClient.name} bank={dataClient.nameBank} cpf={dataClient.cpf} dateTransfer={dataClient.date}/>
+                <CardConfirm typeAccount={dataClient.typeAccount} numberAccount={dataClient.numberAccount} agency={dataClient.agency} nome={dataClient.name} bank={dataClient.nameBank} cpf={dataClient.cpf} dateTransfer={dataClient.date}/>
         </S.Container>
     )
 }

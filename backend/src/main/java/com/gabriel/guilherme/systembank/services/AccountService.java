@@ -94,6 +94,9 @@ public class AccountService implements IaccountService {
                         data.setCpf(client.getCpf());
                         data.setDate(new Date().toString());
                         data.setName(client.getName());
+                        data.setAgency(account.getAgency());
+                        data.setTypeAccount(account.getTypeAccount());
+                        data.setNumberAccount(account.getNumberAccount());
                         return data;
                     }
                 }

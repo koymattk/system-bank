@@ -5,26 +5,20 @@ import { createAccount, agency } from '../../Services/api';
 
 export default function RegisterBank(){
     const { id , bank } = useParams();
-
     const[typeAccount, setTypeAccount] = useState('corrente');
-    const[numberBank, setNumberBank] = useState('');
     const[balance, setBalance] = useState(0)
     const[transPassword, setTransPassword] = useState('');
-    useEffect(()=>{
-        const getNumberBank = () => {
-            if(bank === 'Bs2'){
-                setNumberBank('2018');
-            }else if(bank === 'Nubank'){
-                setNumberBank('260');
-            }else if(bank === 'Inter'){
-                setNumberBank('077');
-            }else if(bank === 'Bradesco'){
-                setNumberBank('237');
-            }
-            getNumberBank();
-            
+    const getNumberBank = (bank) => {
+        if(bank === 'Bs2'){
+           return'218';
+        }else if(bank === 'Nubank'){
+           return '260';
+        }else if(bank === 'Inter'){
+           return '077';
+        }else if(bank === 'Bradesco'){
+           return '237';
         }
-    },[])
+    }
     return(
         <S.Container>
             <span>CADASTRO BANK</span>
@@ -51,13 +45,14 @@ export default function RegisterBank(){
                     banks:[
                         {
                             bankName:bank,
-                            numberBank
+                            numberBank:getNumberBank(bank)
                         }
                     ]
                 })
             }}>CADASTRAR</button>
             <button type="button" onClick={()=>{
-                console.log(numberBank);
+                console.log(getNumberBank(bank))
+              
             }}>aaaa</button>
         </S.Container>
     )
