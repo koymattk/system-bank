@@ -1,6 +1,7 @@
 package com.gabriel.guilherme.systembank.services;
 
 import java.util.List;
+import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -32,8 +33,17 @@ public class ClientService implements IclientService  {
 
 	@Override
 	public Client createAccount(String clientId, Account account) {
+		Random random = new Random();
+		String chars = "1234567890";
+		
+		String numberAccount = "";
+		for(int i = 0; i < 5; i++) {
+			char caracter = chars.charAt(random.nextInt(chars.length()));
+			numberAccount = numberAccount + caracter;
+        }
 		Client client = repository.findById(clientId)
 		.orElseThrow(()-> new IllegalArgumentException("Client not found"));
+		account.setNumberAccount(numberAccount);
 		client.getAccounts().add(account);
 		return repository.save(client);		
 	}
