@@ -33,18 +33,24 @@ public class ClientService implements IclientService  {
 
 	@Override
 	public Client createAccount(String clientId, Account account) {
+		String [] agencys = new String[3];
+		agencys[0] = "0001";
+		agencys[1] = "0002";
+		agencys[2] = "0003";
 		Random random = new Random();
 		String chars = "1234567890";
-		
 		String numberAccount = "";
 		for(int i = 0; i < 5; i++) {
 			char caracter = chars.charAt(random.nextInt(chars.length()));
 			numberAccount = numberAccount + caracter;
-        }
+		}
+
 		Client client = repository.findById(clientId)
 		.orElseThrow(()-> new IllegalArgumentException("Client not found"));
 		account.setNumberAccount(numberAccount);
+		account.setAgency(agencys[random.nextInt(3)]);
 		client.getAccounts().add(account);
+		System.out.println(agencys[random.nextInt(3)]);
 		return repository.save(client);		
 	}
 	@Override

@@ -43,9 +43,9 @@ export default function RegisterBank(){
                     </Link>
             </S.Links>
             <button type="button" onClick={()=>{
+                
                 createAccount(id,{
                     typeAccount,
-                    agency:agency(),
                     balance,
                     keyTrans:transPassword,
                     banks:[
@@ -57,7 +57,7 @@ export default function RegisterBank(){
                 })
             }}>CADASTRAR</button>
             <button type="button" onClick={()=>{
-                
+                console.log(numberBank);
             }}>aaaa</button>
         </S.Container>
     )
