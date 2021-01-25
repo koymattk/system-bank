@@ -1,10 +1,14 @@
 package com.gabriel.guilherme.systembank.services;
 import java.util.Random;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
+
 import com.gabriel.guilherme.systembank.model.Account;
+import com.gabriel.guilherme.systembank.model.Bank;
 import com.gabriel.guilherme.systembank.model.Client;
+import com.gabriel.guilherme.systembank.model.Data;
 import com.gabriel.guilherme.systembank.model.KeyPix;
 import com.gabriel.guilherme.systembank.repositories.ClientRepository;
 
@@ -16,6 +20,7 @@ import org.springframework.stereotype.Service;
 public class AccountService implements IaccountService {
     @Autowired
     private ClientRepository repository;
+   
     public String createRandomPix(){
         Random random = new Random();
 		String chars = "abcdefghijklmnopqrstuvwxyz1234567890";
@@ -76,13 +81,20 @@ public class AccountService implements IaccountService {
         }
         return 0.0;
     }
-    public Client getAccountPix(String keyPix){
+    public Data getAccountPix(String keyPix){
+        Data data = new Data();
         List<Client> clients = repository.findAll();
         for (Client client : clients) {
             for (Account account : client.getAccounts()) {
                 for (KeyPix key : account.getKeys()) {
                     if(key.getKeypix().equals(keyPix)){
-                        return client;
+                        for(Bank bank : account.getBanks()){
+                           data.setNameBank(bank.getBankName()); 
+                        }
+                        data.setCpf(client.getCpf());
+                        data.setDate(new Date().toString());
+                        data.setName(client.getName());
+                        return data;
                     }
                 }
             }

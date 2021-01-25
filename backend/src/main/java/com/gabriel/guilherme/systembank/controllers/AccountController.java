@@ -1,5 +1,7 @@
 package com.gabriel.guilherme.systembank.controllers;
+
 import com.gabriel.guilherme.systembank.model.Client;
+import com.gabriel.guilherme.systembank.model.Data;
 import com.gabriel.guilherme.systembank.model.KeyPix;
 import com.gabriel.guilherme.systembank.services.AccountService;
 
@@ -10,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 
 
 @RestController
@@ -33,7 +34,7 @@ public class AccountController {
         return  service.transferPix(clientId, keyTrans, keyPix, value);
     }
     @GetMapping("/{keyPix}")
-    public Client getAccountPix(@PathVariable String keyPix){
+    public Data getAccountPix(@PathVariable String keyPix){
         return service.getAccountPix(keyPix);
     }
 }

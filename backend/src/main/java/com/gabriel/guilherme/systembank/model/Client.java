@@ -19,8 +19,7 @@ public class Client {
 	private String cpf;
 	private String password;
 	private IsEmployer employer;
-	private Data data;
-	private List<Account> accounts = new ArrayList<Account>();;
+	private List<Account> accounts = new ArrayList<Account>();
 	public Client() {
 		
 	}
@@ -96,12 +95,7 @@ public class Client {
 	public void setEmployer(IsEmployer employer) {
 		this.employer = employer;
 	}
-	public Data getData() {
-		return data;
-	}
-	public void setData(Data data) {
-		this.data = data;
-	}
+	
 
 	public List<Account> getAccounts() {
 		return accounts;

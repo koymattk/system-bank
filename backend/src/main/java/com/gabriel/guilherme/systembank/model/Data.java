@@ -1,12 +1,11 @@
 package com.gabriel.guilherme.systembank.model;
 
-import java.util.Date;
 
 public class Data {
     private String name;
     private String cpf;
     private String nameBank;
-    private Date date;
+    private String date;
 
     public Data(){
 
@@ -30,10 +29,10 @@ public class Data {
     public void setNameBank(String nameBank) {
         this.nameBank = nameBank;
     }
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 }
