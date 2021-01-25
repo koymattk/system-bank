@@ -1,6 +1,5 @@
 package com.gabriel.guilherme.systembank.services;
 import java.util.Random;
-import java.util.stream.Collectors;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -47,6 +46,37 @@ public class AccountService implements IaccountService {
         client.setAccounts(newAccounts); 
         return repository.save(client);
         
+        
+    }
+
+    public Double transferPix(String clientId, String keyTrans, String keyPix, Double value){
+        List<Client> clients = repository.findAll();
+        Client client = repository.findById(clientId)
+        .orElseThrow(()-> new IllegalArgumentException("Client not found"));
+        for (Account account : client.getAccounts()) {
+            if(account.getKeyTrans().equals(keyTrans)){
+                if(account.getBalance() < value){
+                    return 0.0;
+                }else{
+                    account.setBalance(account.getBalance() - value);
+                    for (Client client2 : clients) {
+                        for (Account account2 : client2.getAccounts()) {
+                            for (KeyPix key : account2.getKeys()) {
+                                if(key.getKeypix().equals(keyPix)){
+                                    account2.setBalance(account2.getBalance() + value);
+                                    repository.save(client2);
+                                    repository.save(client);
+                                    return value;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        return 0.0;
+    }
+    public Client getAccountPix(String keyPix){
         
     }
 

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 
 @RestController
@@ -26,6 +27,10 @@ public class AccountController {
     public Client registerKeyPix(@PathVariable String clientId, @PathVariable String index, @RequestBody KeyPix keypix) {
         
         return service.registerKeyPix(clientId, index, keypix);
+    }
+    @PostMapping(value="/transferpix/{clientId}/{keyTrans}/{keyPix}/{value}")
+    public Double transferPix(@PathVariable String clientId, @PathVariable String keyTrans, @PathVariable String keyPix, @PathVariable Double value){
+        return  service.transferPix(clientId, keyTrans, keyPix, value);
     }
 }
 

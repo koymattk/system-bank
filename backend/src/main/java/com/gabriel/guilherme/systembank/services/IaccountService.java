@@ -6,4 +6,6 @@ import com.gabriel.guilherme.systembank.model.KeyPix;
 public interface IaccountService {
     String createRandomPix  ();
     Client registerKeyPix (String clientId, String index, KeyPix keyPix);
+    Double transferPix (String clientId,String keyTrans, String keyPix, Double value);
+    Client getAccountPix(String keyPix);
 }
