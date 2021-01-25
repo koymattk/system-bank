@@ -4,7 +4,7 @@ export const fetchUserProfiles = () => {
     return  axios.get("http://localhost:8080/clients");
 }
 
-export const validate = async (login,password,cPassword,cpf,rg, tell, email) => {
+export const validate = (login,password,cPassword,cpf,rg, tell, email) => {
     if (login === '' || password === ''|| cPassword === '' || cpf === '' || rg === ''||tell === ''|| email ===''){
         alert('PREENCHA OS CAMPOS DE MANEIRA CORRETA');
         return false;
@@ -60,4 +60,9 @@ export const registerKeyPix = (clientId, index, keypix) => {
 export const agency = () =>{
     const agencys = ['0001','0002','0003'];
     return agencys[Math.floor(Math.random() * 3)];
+}
+
+export const getClientPix = async (keyPix) => {
+    
+    return axios.get(`http://localhost:8080/account/${keyPix}`);
 }

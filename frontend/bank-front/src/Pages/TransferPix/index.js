@@ -1,8 +1,8 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import * as S from './styles';
-import {Link} from 'react-router-dom'
+import {Link, useParams} from 'react-router-dom'
 import CardConfirm from '../../Components/CardConfirm'
-
+import {getClientPix} from '../../Services/api'; 
 
 export default function TransferPix() {
 
@@ -10,21 +10,27 @@ export default function TransferPix() {
     const[bank, setBank]=useState('');
     const[value, setValue]=useState('');
     const[passTrans, setPassTrans] = useState('')
-    
+    const[dataClient, setDataClient] = useState({});
+    const[key, setKey] = useState('');
+    const {index} = useParams();
+    useEffect(()=>{
+        getClientPix(key).then(res => setDataClient(res.data));
+    },[key])
     return(
         <S.Container>
             <S.Inputs>
                 <label>Digite a chave PIX para qual deseja transferir</label>
-                <input type="text" placeholder="CHAVE" />
+                <input onChange={key => setKey(key.target.value)} type="text" placeholder="CHAVE" />
                 <label>Digite sua senha de transferencia</label>
                 <input type="password" placeholder='senha de tranferencia' value={passTrans} onChange={pass => setPassTrans(pass.target.value)}  />
                 <label>Qual valor você deseja transferir</label>
                 <input type="text" placeholder="R$" />
+                <input type="text" onChange={nome => setNome(nome.target.value)}/>
             </S.Inputs>
-                <S.Links>
-                    <Link to="/homepage"><span>VERIFICAR</span></Link>
-                </S.Links>
-                <CardConfirm nome={nome} bank={bank} value={value}/>
+                <button type='button' onClick={()=>{
+                   console.log(dataClient)
+                }}>Tranferir</button>
+                <CardConfirm nome={dataClient.name} bank={dataClient.nameBank} cpf={dataClient.cpf} dateTransfer={dataClient.date}/>
         </S.Container>
     )
 }
