@@ -21,7 +21,11 @@ export default function RegisterPage() {
         if(client === undefined)
            return;
         else
-            postClient(client);
+            postClient(client).then(res=>{
+                if(res.data === ""){
+                    alert("Erro ao cadastrar Campos ja existentes");
+                }
+            });
             alert('Cadastro Finalizado');
     },[client])
     

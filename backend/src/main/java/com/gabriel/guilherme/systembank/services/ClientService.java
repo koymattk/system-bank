@@ -28,7 +28,23 @@ public class ClientService implements IclientService  {
 
 	@Override
 	public Client created(Client client) {
+		List<Client> clients = repository.findAll();
+		for (Client client1 : clients) {
+			if(client.getCpf().equals(client1.getCpf()) 
+				|| client.getEmail().equals(client1.getEmail())
+				|| client.getLogin().equals(client1.getLogin())
+				|| client.getRg().equals(client1.getRg())
+				|| client.getTell().equals(client1.getTell())){
+					return null;
+				}
+		}
 		return repository.save(client);
+		/*"tell": "79988088092",
+		"login": "koymatt",
+		"email": "KOYMATTK@GMAIL.COM",
+		"rg": "3681954",
+		"cpf": "07064987554",
+	 */
 	}
 
 	@Override
