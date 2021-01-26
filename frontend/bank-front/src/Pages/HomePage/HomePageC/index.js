@@ -2,11 +2,13 @@ import React, { useEffect, useState } from 'react';
 import * as S from './styles'
 import {Link, useParams} from 'react-router-dom';
 import { getClient } from '../../../Services/api';
+import CardExtrato from '../../../Components/CardExtrato';
 
 
 export default function HomePageC({balance, typeAccount,bank, index}){
     const { id } = useParams();
     const[client, setClient] = useState({})
+    const[showExtrato,setShowExtrato] = useState(false);
     useEffect(()=>{
         getClient(id).then(res=>setClient(res))
     },[])
@@ -37,6 +39,10 @@ export default function HomePageC({balance, typeAccount,bank, index}){
             <S.Links>
                     <Link to={`/registerkeypix/${id}/${index}`}><span>CADASTRAR PIX</span></Link>
             </S.Links>
+            <CardExtrato id={id} index={index} showExtrato={showExtrato} />
+            <button onClick={()=>{
+                setShowExtrato(!showExtrato);
+            }}>Gerar Extrato</button>
         </S.Container>
     )
 }

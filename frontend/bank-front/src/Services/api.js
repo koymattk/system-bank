@@ -66,3 +66,7 @@ export const getClientPix = async (keyPix) => {
     
     return axios.get(`http://localhost:8080/account/${keyPix}`);
 }
+
+export const getExtrato = async (id,index) => {
+    return axios.get(`http://localhost:8080/account/extrato/${id}/${index}`);
+}

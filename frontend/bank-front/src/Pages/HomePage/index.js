@@ -11,9 +11,6 @@ export default function HomePage() {
       
         getClient(id).then(res=>setAccount(res.accounts));
          
-        
-        
-       
         console.log('oi')
         
     },[])
@@ -25,6 +22,7 @@ export default function HomePage() {
             accounts.map(account => {
             return account.banks[0].bankName === bank ? <HomePageC index={accounts.indexOf(account)} balance={account.balance}typeAccount={account.typeAccount} bank={account.banks[0].bankName}/> : <></>
             })
+           
           }
         </>
         

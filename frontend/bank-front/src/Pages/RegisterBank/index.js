@@ -48,7 +48,11 @@ export default function RegisterBank(){
                             numberBank:getNumberBank(bank)
                         }
                     ]
-                })
+                }).then(res =>{
+                    if(res.data === ""){
+                        alert("A senha de transferencia já existe ela deve ser unica");
+                    }
+                });
             }}>CADASTRAR</button>
             <button type="button" onClick={()=>{
                 console.log(getNumberBank(bank))
