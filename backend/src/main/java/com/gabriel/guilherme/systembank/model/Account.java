@@ -13,6 +13,7 @@ public class Account implements Serializable {
 	private String keyTrans;
 	private String agency;
 	private double balance;
+	private List<Extrato> extrato = new ArrayList<Extrato>();
 	private List<Bank> banks;
 	private List<KeyPix> keys = new ArrayList<KeyPix>();
 	
@@ -62,6 +63,12 @@ public class Account implements Serializable {
 	}
 	public void setBalance(double balance) {
 		this.balance = balance;
+	}
+	public List<Extrato> getExtrato() {
+		return extrato;
+	}
+	public void setExtrato(List<Extrato> extrato) {
+		this.extrato = extrato;
 	}
 	public List<Bank> getBanks() {
 		return banks;

@@ -60,9 +60,16 @@ public class ClientService implements IclientService  {
 			char caracter = chars.charAt(random.nextInt(chars.length()));
 			numberAccount = numberAccount + caracter;
 		}
-
+		List<Client> clients = repository.findAll();
 		Client client = repository.findById(clientId)
 		.orElseThrow(()-> new IllegalArgumentException("Client not found"));
+		for (Client client1 : clients) {
+			for (Account account1 : client1.getAccounts()) {
+				if(account.getKeyTrans().equals(account1.getKeyTrans())){
+					return null;
+				}
+			}
+		}
 		account.setNumberAccount(numberAccount);
 		account.setAgency(agencys[random.nextInt(3)]);
 		client.getAccounts().add(account);

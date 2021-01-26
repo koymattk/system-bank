@@ -9,6 +9,7 @@ import com.gabriel.guilherme.systembank.model.Account;
 import com.gabriel.guilherme.systembank.model.Bank;
 import com.gabriel.guilherme.systembank.model.Client;
 import com.gabriel.guilherme.systembank.model.Data;
+import com.gabriel.guilherme.systembank.model.Extrato;
 import com.gabriel.guilherme.systembank.model.KeyPix;
 import com.gabriel.guilherme.systembank.repositories.ClientRepository;
 
@@ -64,11 +65,13 @@ public class AccountService implements IaccountService {
                     return 0.0;
                 }else{
                     account.setBalance(account.getBalance() - value);
+                    account.getExtrato().add(new Extrato("- R$" + value + " Data: " + new Date().toString()));
                     for (Client client2 : clients) {
                         for (Account account2 : client2.getAccounts()) {
                             for (KeyPix key : account2.getKeys()) {
                                 if(key.getKeypix().equals(keyPix)){
                                     account2.setBalance(account2.getBalance() + value);
+                                    account2.getExtrato().add(new Extrato("+ R$" + value + "Data" + new Date().toString()));
                                     repository.save(client2);
                                     repository.save(client);
                                     return value;
