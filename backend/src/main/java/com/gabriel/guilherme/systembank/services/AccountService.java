@@ -108,6 +108,20 @@ public class AccountService implements IaccountService {
         return null;
     }
 
+    public List<Extrato> getExtratos(String clientId, String index){
+        int position =  Integer.parseInt(index);
+        Client client = repository.findById(clientId)
+        .orElseThrow(()-> new IllegalArgumentException("Client not found"));
+        for (Account account : client.getAccounts()) {
+            if(position == client.getAccounts().indexOf(account)){
+                return account.getExtrato();
+            } 
+        }
+        return null;
+
+    }
+
+
 
 
 }

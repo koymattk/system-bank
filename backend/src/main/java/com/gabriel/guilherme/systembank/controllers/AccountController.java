@@ -1,8 +1,12 @@
 package com.gabriel.guilherme.systembank.controllers;
 
+import java.util.List;
+
 import com.gabriel.guilherme.systembank.model.Client;
 import com.gabriel.guilherme.systembank.model.Data;
 import com.gabriel.guilherme.systembank.model.KeyPix;
+import com.gabriel.guilherme.systembank.model.Extrato;
+
 import com.gabriel.guilherme.systembank.services.AccountService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,6 +40,10 @@ public class AccountController {
     @GetMapping("/{keyPix}")
     public Data getAccountPix(@PathVariable String keyPix){
         return service.getAccountPix(keyPix);
+    }
+    @GetMapping("/extrato/{clientId}/{index}")
+    public List<Extrato> getExtrato(@PathVariable String clientId, @PathVariable String index){
+        return service.getExtratos(clientId, index);
     }
 }
 
