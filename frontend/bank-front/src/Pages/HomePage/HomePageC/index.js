@@ -34,7 +34,10 @@ export default function HomePageC({balance, typeAccount,bank, index}){
                 </span>
             </S.Saldo>
             <S.Links>
-                    <Link to={`/transferpix`}><span>TRANSFERIR</span></Link>
+                    <Link to={`/transferpix`}><span>TRANSFERIR VIA PIX</span></Link>
+            </S.Links>
+            <S.Links>
+                    <Link to={`/transfer`}><span>TRANSFERIR</span></Link>
             </S.Links>
             <S.Links>
                     <Link to={`/registerkeypix/${id}/${index}`}><span>CADASTRAR PIX</span></Link>
