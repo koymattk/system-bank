@@ -34,13 +34,13 @@ public class AccountController {
         
         return service.registerKeyPix(clientId, index, keypix);
     }
-    @PutMapping(value="/transferpix/{clientId}/{keyTrans}/{keyPix}/{value}")
-    public Double transferPix(@PathVariable String clientId, @PathVariable String keyTrans, @PathVariable String keyPix, @PathVariable Double value){
-        return  service.transferPix(clientId, keyTrans, keyPix, value);
+    @PutMapping(value="/transferpix/{clientId}/{index}/{keyPix}/{value}")
+    public Double transferPix(@PathVariable String clientId, @PathVariable String index, @PathVariable String keyPix, @PathVariable Double value){
+        return  service.transferPix(clientId, index, keyPix, value);
     }
-    @PutMapping(value="/transfer/{clientId}/{keyTrans}")
-    public Double transfer(@PathVariable String clientId, @PathVariable String keyTrans, @RequestBody TransferAccount account){
-        return service.transfer(clientId, keyTrans, account);
+    @PutMapping(value="/transfer/{clientId}/{index}")
+    public Double transfer(@PathVariable String clientId, @PathVariable String index, @RequestBody TransferAccount account){
+        return service.transfer(clientId, index, account);
     }
     @GetMapping("/{keyPix}")
     public Data getAccountPix(@PathVariable String keyPix){

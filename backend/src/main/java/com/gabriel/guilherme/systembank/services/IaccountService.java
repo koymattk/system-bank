@@ -11,8 +11,8 @@ import com.gabriel.guilherme.systembank.model.TransferAccount;
 public interface IaccountService {
     String createRandomPix();
     Client registerKeyPix (String clientId, String index, KeyPix keyPix);
-    Double transferPix (String clientId,String keyTrans, String keyPix, Double value);
+    Double transferPix (String clientId,String index, String keyPix, Double value);
     Data getAccountPix(String keyPix);
     List<Extrato> getExtratos(String clientId, String index);
-    Double transfer(String clientId, String keyTrans, TransferAccount account);
+    Double transfer(String clientId, String index, TransferAccount account);
 }

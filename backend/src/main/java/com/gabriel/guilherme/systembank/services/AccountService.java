@@ -56,25 +56,45 @@ public class AccountService implements IaccountService {
         
     }
 
-    public Double transferPix(String clientId, String keyTrans, String keyPix, Double value){
+    public Double transferPix(String clientId, String index, String keyPix, Double value){
+        
+        int position =  Integer.parseInt(index);
         List<Client> clients = repository.findAll();
         Client client = repository.findById(clientId)
         .orElseThrow(()-> new IllegalArgumentException("Client not found"));
         for (Account account : client.getAccounts()) {
-            if(account.getKeyTrans().equals(keyTrans)){
+            if(position ==client.getAccounts().indexOf(account)){
                 if(account.getBalance() < value){
+                    System.out.println("olaaaaa");
                     return 0.0;
                 }else{
                     account.setBalance(account.getBalance() - value);
                     account.getExtrato().add(new Extrato("- R$" + value + " Data: " + new Date().toString()));
+                    
                     for (Client client2 : clients) {
                         for (Account account2 : client2.getAccounts()) {
                             for (KeyPix key : account2.getKeys()) {
                                 if(key.getKeypix().equals(keyPix)){
+                                    if(client.getId().equals(clientId)){
+                                        for (Account account3 : client.getAccounts()) {
+                                            for (KeyPix keys : account3.getKeys()) {
+                                                if(keys.getKeypix().equals(keyPix)){
+                                                    account3.setBalance(account3.getBalance() + value);
+                                                    account3.getExtrato().add(new Extrato("+ R$" + value + "Data" + new Date().toString()));
+                                                    repository.save(client);
+                                                    return value;
+                                                }
+                                            }
+                                        }
+                                    }
+                                    System.out.println("cheguei ate aqui");
                                     account2.setBalance(account2.getBalance() + value);
                                     account2.getExtrato().add(new Extrato("+ R$" + value + "Data" + new Date().toString()));
-                                    repository.save(client2);
                                     repository.save(client);
+                                    repository.save(client2);
+                                    System.out.println("cheguei ate aqui2");  
+                                    System.out.println(account.toString());
+                                    System.out.println(account2.toString());                                 
                                     return value;
                                 }
                             }
@@ -83,6 +103,7 @@ public class AccountService implements IaccountService {
                 }
             }
         }
+        System.out.println("olaaaaa");
         return 0.0;
     }
     public Data getAccountPix(String keyPix){
@@ -124,7 +145,8 @@ public class AccountService implements IaccountService {
 
     
 
-    public Double transfer(String clientId, String keyTrans, TransferAccount account){
+    public Double transfer(String clientId, String index, TransferAccount account){
+        int position =  Integer.parseInt(index);
         List<Client> clients = repository.findAll();
         Client client = repository.findById(clientId)
         .orElseThrow(()-> new IllegalArgumentException("Client not found"));
@@ -132,7 +154,7 @@ public class AccountService implements IaccountService {
         for (Account account1 : client.getAccounts()) {
             System.out.println("ola");
 
-            if(account1.getKeyTrans().equals(keyTrans)){
+            if(position == client.getAccounts().indexOf(account1)){
                 System.out.println("ola");
                 if(account1.getBalance() < account.getValue()){
                     return 0.0;
