@@ -6,6 +6,7 @@ import com.gabriel.guilherme.systembank.model.Client;
 import com.gabriel.guilherme.systembank.model.Data;
 import com.gabriel.guilherme.systembank.model.Extrato;
 import com.gabriel.guilherme.systembank.model.KeyPix;
+import com.gabriel.guilherme.systembank.model.TransferAccount;
 
 public interface IaccountService {
     String createRandomPix();
@@ -13,4 +14,5 @@ public interface IaccountService {
     Double transferPix (String clientId,String keyTrans, String keyPix, Double value);
     Data getAccountPix(String keyPix);
     List<Extrato> getExtratos(String clientId, String index);
+    Double transfer(String clientId, String keyTrans, TransferAccount account);
 }

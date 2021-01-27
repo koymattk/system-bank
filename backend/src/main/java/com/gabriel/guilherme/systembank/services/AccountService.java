@@ -11,6 +11,7 @@ import com.gabriel.guilherme.systembank.model.Client;
 import com.gabriel.guilherme.systembank.model.Data;
 import com.gabriel.guilherme.systembank.model.Extrato;
 import com.gabriel.guilherme.systembank.model.KeyPix;
+import com.gabriel.guilherme.systembank.model.TransferAccount;
 import com.gabriel.guilherme.systembank.repositories.ClientRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -121,7 +122,46 @@ public class AccountService implements IaccountService {
 
     }
 
+    
 
+    public Double transfer(String clientId, String keyTrans, TransferAccount account){
+        List<Client> clients = repository.findAll();
+        Client client = repository.findById(clientId)
+        .orElseThrow(()-> new IllegalArgumentException("Client not found"));
+        System.out.println("ola");
+        for (Account account1 : client.getAccounts()) {
+            System.out.println("ola");
 
-
+            if(account1.getKeyTrans().equals(keyTrans)){
+                System.out.println("ola");
+                if(account1.getBalance() < account.getValue()){
+                    return 0.0;
+                }else{
+                    System.out.println("ola");
+                    account1.setBalance(account1.getBalance() - account.getValue());
+                    account1.getExtrato().add(new Extrato("- R$" + account.getValue() + " Data: " + new Date().toString()));
+                    for (Client client2 : clients) {
+                        if(client2.getCpf().equals(account.getCpf())){
+                            for (Account account2 : client2.getAccounts()) {
+                                if(account2.getAgency().equals(account.getAgency())
+                                && account2.getNumberAccount().equals(account.getNumberAccount())
+                                && account2.getTypeAccount().equals(account.getTypeAccount())){
+                                    for (Bank bank : account2.getBanks()) {
+                                        if(bank.getBankName().equals(account.getBank())){
+                                            account2.setBalance(account2.getBalance() + account.getValue());
+                                            account2.getExtrato().add(new Extrato("+ R$" + account.getValue() + "Data" + new Date().toString()));
+                                            repository.save(client2);
+                                            repository.save(client);
+                                            return account.getValue();
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        return 0.0;
+    } 
 }

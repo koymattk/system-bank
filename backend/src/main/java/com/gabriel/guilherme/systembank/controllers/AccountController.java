@@ -5,6 +5,7 @@ import java.util.List;
 import com.gabriel.guilherme.systembank.model.Client;
 import com.gabriel.guilherme.systembank.model.Data;
 import com.gabriel.guilherme.systembank.model.KeyPix;
+import com.gabriel.guilherme.systembank.model.TransferAccount;
 import com.gabriel.guilherme.systembank.model.Extrato;
 
 import com.gabriel.guilherme.systembank.services.AccountService;
@@ -36,6 +37,10 @@ public class AccountController {
     @PutMapping(value="/transferpix/{clientId}/{keyTrans}/{keyPix}/{value}")
     public Double transferPix(@PathVariable String clientId, @PathVariable String keyTrans, @PathVariable String keyPix, @PathVariable Double value){
         return  service.transferPix(clientId, keyTrans, keyPix, value);
+    }
+    @PutMapping(value="/transfer/{clientId}/{keyTrans}")
+    public Double transfer(@PathVariable String clientId, @PathVariable String keyTrans, @RequestBody TransferAccount account){
+        return service.transfer(clientId, keyTrans, account);
     }
     @GetMapping("/{keyPix}")
     public Data getAccountPix(@PathVariable String keyPix){
