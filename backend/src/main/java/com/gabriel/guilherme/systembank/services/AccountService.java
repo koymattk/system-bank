@@ -165,6 +165,7 @@ public class AccountService implements IaccountService {
                                     if(account3.getAgency().equals(account.getAgency())
                                     && account3.getNumberAccount().equals(account.getNumberAccount())
                                     && account3.getTypeAccount().equals(account.getTypeAccount())){
+                                        System.out.println("olaaaaaaaaaaaa");
                                         account3.setBalance(account3.getBalance() + account.getValue());
                                         account3.getExtrato().add(new Extrato("+ R$" + account.getValue() + " Data: " + new Date().toString()));
                                         repository.save(client);

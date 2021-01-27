@@ -5,14 +5,13 @@ import CardConfirm from '../../Components/CardConfirm'
 import {getClientPix, transferPix} from '../../Services/api'; 
 
 export default function TransferPix() {
-
     const[nome, setNome]=useState('');
     const[bank, setBank]=useState('');
     const[value, setValue]=useState(0);
     const[passTrans, setPassTrans] = useState('')
     const[dataClient, setDataClient] = useState({});
     const[key, setKey] = useState('');
-    const {id} = useParams();
+    const {id, index} = useParams();
     useEffect(()=>{
         if(key !== ''){
             getClientPix(key).then(res => setDataClient(res.data));
@@ -27,11 +26,12 @@ export default function TransferPix() {
                 <label>Digite sua senha de transferencia</label>
                 <input type="password" placeholder='senha de tranferencia' value={passTrans} onChange={pass => setPassTrans(pass.target.value)}  />
                 <label>Qual valor você deseja transferir</label>
-                <input type="number" placeholder="R$" />
+                <input type="number" placeholder="R$" onChange={value => setValue(value.target.value)} />
                 <input type="text" onChange={nome => setNome(nome.target.value)}/>
             </S.Inputs>
                 <button type='button' onClick={()=>{
-                   transferPix(id, passTrans,key, value).then(res=>console.log(res.data));
+                    console.log('oi')
+                   transferPix(id,index,key, value);
                 }}>Tranferir</button>
                 <CardConfirm typeAccount={dataClient.typeAccount} numberAccount={dataClient.numberAccount} agency={dataClient.agency} nome={dataClient.name} bank={dataClient.nameBank} cpf={dataClient.cpf} dateTransfer={dataClient.date}/>
         </S.Container>

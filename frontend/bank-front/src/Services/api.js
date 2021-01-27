@@ -66,13 +66,16 @@ export const getClientPix = async (keyPix) => {
     
     return axios.get(`http://localhost:8080/account/${keyPix}`);
 }
-export const transferPix = async(clientId, keyTrans, keyPix, value) => {
-    if(value<=0){
-        return alert("Valor transferido tem que ser maior que 0");
-    }
-    return axios.put(`http://localhost:8080/account/transferpix/${clientId}/${keyTrans}/${keyPix}/${value}`);
+export const transferPix = async(clientId, index, keyPix, value) => {
+    
+    console.log(index);
+    return axios.put(`http://localhost:8080/account/transferpix/${clientId}/${index}/${keyPix}/${value}`);
 }
-
+export const transfer = async (clientId, index, account) =>{
+    console.log(clientId,index)
+    console.log(account);
+    return axios.put(`http://localhost:8080/account/transfer/${clientId}/${index}`,account)
+}
 export const getExtrato = async (id,index) => {
     return axios.get(`http://localhost:8080/account/extrato/${id}/${index}`);
 }

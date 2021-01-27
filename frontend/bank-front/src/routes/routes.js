@@ -19,9 +19,9 @@ export default function Routes (){
                 <Route path="/homepageclient/:id" exact component={HomePageClient} />
                 <Route path="/registerbank/:bank/:id" exact component={RegisterBank} />
                 <Route path="/homepage/:id/:bank" exact component={HomePage} />                
-                <Route path="/transferpix/:id" exact component={TransferPix} />
+                <Route path="/transferpix/:id/:index" exact component={TransferPix} />
                 <Route path="/registerkeypix/:id/:index" exact component={RegisterKeyPix} />
-                <Route path="/transfer/:id" exact component={Transfer}/>
+                <Route path="/transfer/:id/:index" exact component={Transfer}/>
             </Switch>
         </BrowserRouter>
     )
