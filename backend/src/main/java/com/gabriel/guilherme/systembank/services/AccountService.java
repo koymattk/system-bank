@@ -80,7 +80,7 @@ public class AccountService implements IaccountService {
                                             for (KeyPix keys : account3.getKeys()) {
                                                 if(keys.getKeypix().equals(keyPix)){
                                                     account3.setBalance(account3.getBalance() + value);
-                                                    account3.getExtrato().add(new Extrato("+ R$" + value + "Data" + new Date().toString()));
+                                                    account3.getExtrato().add(new Extrato("+ R$" + value + " Data: " + new Date().toString()));
                                                     repository.save(client);
                                                     return value;
                                                 }
@@ -89,7 +89,7 @@ public class AccountService implements IaccountService {
                                     }
                                     System.out.println("cheguei ate aqui");
                                     account2.setBalance(account2.getBalance() + value);
-                                    account2.getExtrato().add(new Extrato("+ R$" + value + "Data" + new Date().toString()));
+                                    account2.getExtrato().add(new Extrato("+ R$" + value + " Data: " + new Date().toString()));
                                     repository.save(client);
                                     repository.save(client2);
                                     System.out.println("cheguei ate aqui2");  
@@ -150,20 +150,28 @@ public class AccountService implements IaccountService {
         List<Client> clients = repository.findAll();
         Client client = repository.findById(clientId)
         .orElseThrow(()-> new IllegalArgumentException("Client not found"));
-        System.out.println("ola");
         for (Account account1 : client.getAccounts()) {
-            System.out.println("ola");
-
             if(position == client.getAccounts().indexOf(account1)){
-                System.out.println("ola");
                 if(account1.getBalance() < account.getValue()){
                     return 0.0;
                 }else{
-                    System.out.println("ola");
                     account1.setBalance(account1.getBalance() - account.getValue());
                     account1.getExtrato().add(new Extrato("- R$" + account.getValue() + " Data: " + new Date().toString()));
                     for (Client client2 : clients) {
                         if(client2.getCpf().equals(account.getCpf())){
+                            if(client2.getId().equals(client.getId())){
+                                System.out.println("somos iguais");
+                                for (Account account3 : client.getAccounts()) {
+                                    if(account3.getAgency().equals(account.getAgency())
+                                    && account3.getNumberAccount().equals(account.getNumberAccount())
+                                    && account3.getTypeAccount().equals(account.getTypeAccount())){
+                                        account3.setBalance(account3.getBalance() + account.getValue());
+                                        account3.getExtrato().add(new Extrato("+ R$" + account.getValue() + " Data: " + new Date().toString()));
+                                        repository.save(client);
+                                        return account.getValue();
+                                    }
+                                        
+                            }
                             for (Account account2 : client2.getAccounts()) {
                                 if(account2.getAgency().equals(account.getAgency())
                                 && account2.getNumberAccount().equals(account.getNumberAccount())
@@ -171,7 +179,7 @@ public class AccountService implements IaccountService {
                                     for (Bank bank : account2.getBanks()) {
                                         if(bank.getBankName().equals(account.getBank())){
                                             account2.setBalance(account2.getBalance() + account.getValue());
-                                            account2.getExtrato().add(new Extrato("+ R$" + account.getValue() + "Data" + new Date().toString()));
+                                            account2.getExtrato().add(new Extrato("+ R$" + account.getValue() + " Data: " + new Date().toString()));
                                             repository.save(client2);
                                             repository.save(client);
                                             return account.getValue();
@@ -184,6 +192,9 @@ public class AccountService implements IaccountService {
                 }
             }
         }
-        return 0.0;
+        
     } 
+    return 0.0;
+}
+
 }
