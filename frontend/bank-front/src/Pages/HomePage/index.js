@@ -20,7 +20,7 @@ export default function HomePage() {
           <button type="button" onClick={()=>{console.log(accounts)}}>AAAA</button>
           {
             accounts.map(account => {
-            return account.banks[0].bankName === bank ? <HomePageC index={accounts.indexOf(account)} balance={account.balance}typeAccount={account.typeAccount} bank={account.banks[0].bankName}/> : <></>
+            return account.banks[0].bankName === bank ? <HomePageC id={id} index={accounts.indexOf(account)} balance={account.balance}typeAccount={account.typeAccount} bank={account.banks[0].bankName}/> : <></>
             })
            
           }

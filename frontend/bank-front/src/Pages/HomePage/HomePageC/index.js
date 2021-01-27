@@ -5,8 +5,7 @@ import { getClient } from '../../../Services/api';
 import CardExtrato from '../../../Components/CardExtrato';
 
 
-export default function HomePageC({balance, typeAccount,bank, index}){
-    const { id } = useParams();
+export default function HomePageC({balance, typeAccount,bank, index, id}){
     const[client, setClient] = useState({})
     const[showExtrato,setShowExtrato] = useState(false);
     useEffect(()=>{
@@ -34,10 +33,10 @@ export default function HomePageC({balance, typeAccount,bank, index}){
                 </span>
             </S.Saldo>
             <S.Links>
-                    <Link to={`/transferpix`}><span>TRANSFERIR VIA PIX</span></Link>
+                    <Link to={`/transferpix/${id}`}><span>TRANSFERIR VIA PIX</span></Link>
             </S.Links>
             <S.Links>
-                    <Link to={`/transfer`}><span>TRANSFERIR</span></Link>
+                    <Link to={`/transfer/${id}`}><span>TRANSFERIR</span></Link>
             </S.Links>
             <S.Links>
                     <Link to={`/registerkeypix/${id}/${index}`}><span>CADASTRAR PIX</span></Link>
