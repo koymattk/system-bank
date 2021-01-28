@@ -12,7 +12,7 @@ export const validate = (login,password,cPassword,cpf,rg, tell, email) => {
         if (password === cPassword){
             return true;
         }
-        alert("AS SENHAS PRECISAM SER IGUAIS")
+        alert("AS SENHAS PRECISAM SER IGUAIS");
         return false;  
     }
 }
@@ -22,7 +22,7 @@ export const postClient = (client) => {
 }
 
 export const createAccount = (clientId, account) => {
-    return axios.put(`http://localhost:8080/clients/${clientId}`, account)
+    return axios.put(`http://localhost:8080/clients/${clientId}`, account);
 }
 
 export const getClient = async (id) => {
@@ -54,7 +54,7 @@ export const createPix = () => {
 }
 
 export const registerKeyPix = (clientId, index, keypix) => {
-    return axios.put(`http://localhost:8080/account/${clientId}/${index}`, keypix)
+    return axios.put(`http://localhost:8080/account/${clientId}/${index}`, keypix);
 }
 
 export const agency = () =>{
@@ -74,8 +74,11 @@ export const transferPix = async(clientId, index, keyPix, value) => {
 export const transfer = async (clientId, index, account) =>{
     console.log(clientId,index)
     console.log(account);
-    return axios.put(`http://localhost:8080/account/transfer/${clientId}/${index}`,account)
+    return axios.put(`http://localhost:8080/account/transfer/${clientId}/${index}`,account);
 }
 export const getExtrato = async (id,index) => {
     return axios.get(`http://localhost:8080/account/extrato/${id}/${index}`);
+}
+export const sacar = async (saque) =>{
+    return axios.put("http://localhost:8080/account/sacar", saque);
 }

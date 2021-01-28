@@ -9,6 +9,7 @@ import RegisterKeyPix from '../../src/Pages/RegisterKeyPix'
 import HomePageClient from '../Pages/HomePageClient'
 import RegisterBank from '../../src/Pages/RegisterBank'
 import Transfer from '../Pages/Transfer'; 
+import Sacar from '../Pages/Sacar';
 
 export default function Routes (){
     return(
@@ -22,6 +23,7 @@ export default function Routes (){
                 <Route path="/transferpix/:id/:index" exact component={TransferPix} />
                 <Route path="/registerkeypix/:id/:index" exact component={RegisterKeyPix} />
                 <Route path="/transfer/:id/:index" exact component={Transfer}/>
+                <Route path="/sacar/:id/:index" exact component={Sacar}/>
             </Switch>
         </BrowserRouter>
     )

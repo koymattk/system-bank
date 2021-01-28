@@ -39,8 +39,12 @@ export default function HomePageC({balance, typeAccount,bank, index, id}){
                     <Link to={`/transfer/${id}/${index}`}><span>TRANSFERIR</span></Link>
             </S.Links>
             <S.Links>
+                    <Link to={`/sacar/${id}/${index}`}><span>SACAR</span></Link>
+            </S.Links>
+            <S.Links>
                     <Link to={`/registerkeypix/${id}/${index}`}><span>CADASTRAR PIX</span></Link>
             </S.Links>
+            
             <CardExtrato id={id} index={index} showExtrato={showExtrato} />
             <button onClick={()=>{
                 setShowExtrato(!showExtrato);
