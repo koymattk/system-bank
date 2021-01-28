@@ -6,7 +6,7 @@ import * as S from './styles'
 
 
 export default function RegisterPage() {
-    const[clientType, setClientType] = useState(0);
+   
     const[email, setEmail] = useState('');
     const[login, setLogin] = useState('');
     const[password, setPassword] = useState('');
@@ -50,15 +50,9 @@ export default function RegisterPage() {
                 <input value={cpf} onChange={cpf => setCpf(cpf.target.value)} type="text" placeholder="Digite seu CPF" />
                 <label>RG</label>
                 <input value={rg} onChange={rg => setRg(rg.target.value)} type="text" placeholder="Digite seu RG" />
-                <label>opções de conta</label>
-                <select value={clientType} onChange={e => setClientType(e.target.value)}>
-                    <option value={0} >Cliente</option>
-                    <option value={1} >Empregador</option>
-                </select>
-
                 <button type="button" onClick={()=>{
                     if(validate(login,password,cPassword,cpf,rg, tell, email)){
-                        setClient({name,tell,login,email,rg,cpf,password,employer:clientType,accounts:[]})
+                        setClient({name,tell,login,email,rg,cpf,password,accounts:[]})
                         console.log(client);
                     }
                     else{

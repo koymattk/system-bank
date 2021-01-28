@@ -6,7 +6,6 @@ import {getClientPix, transferPix} from '../../Services/api';
 
 export default function TransferPix() {
     const[value, setValue]=useState(0);
-    const[passTrans, setPassTrans] = useState('')
     const[dataClient, setDataClient] = useState({});
     const[key, setKey] = useState('');
     const {id, index, bank} = useParams();
@@ -20,9 +19,7 @@ export default function TransferPix() {
         <S.Container>
             <S.Inputs>
                 <label>Digite a chave PIX para qual deseja transferir</label>
-                <input onChange={key => setKey(key.target.value)} type="text" placeholder="CHAVE" />
-                <label>Digite sua senha de transferencia</label>
-                <input type="password" placeholder='senha de tranferencia' value={passTrans} onChange={pass => setPassTrans(pass.target.value)}  />
+                <input onChange={key => setKey(key.target.value)} type="text" placeholder="CHAVE" />              
                 <label>Qual valor você deseja transferir</label>
                 <input type="number" placeholder="R$" onChange={value => setValue(value.target.value)} />
                

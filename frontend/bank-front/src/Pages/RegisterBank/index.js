@@ -4,10 +4,10 @@ import {Link, useParams} from 'react-router-dom';
 import { createAccount, agency } from '../../Services/api';
 
 export default function RegisterBank(){
+    const[clientType, setClientType] = useState(0);
     const { id , bank } = useParams();
     const[typeAccount, setTypeAccount] = useState('corrente');
     const[balance, setBalance] = useState(0)
-    const[transPassword, setTransPassword] = useState('');
     const getNumberBank = (bank) => {
         if(bank === 'Bs2'){
            return'218';
@@ -28,20 +28,19 @@ export default function RegisterBank(){
                     <option value={'poupanca'}>POUPANÇA</option>
                     <option value={'salario'}>CONTA SALARIO</option>
                 </select>
+            <label>TIPO DE CONTA</label>
+                <select value={clientType} onChange={e => setClientType(e.target.value)}>
+                    <option value={0} >Cliente</option>
+                    <option value={1} >Empregador</option>
+                </select>
             <span>SALDO INICIAL</span>
             <input onChange={balance=>setBalance(balance.target.value)} value={balance} placeholder='INFORME SEU SALDO'  type="Number"/>
-            <input onChange={pas => setTransPassword(pas.target.value)} value={transPassword} placeholder='SENHA DE TRANSFERANCIA' type="text" />
-            <S.Links>
-                    <Link to="/">
-                        <span>CADASTRAR</span>
-                    </Link>
-            </S.Links>
             <button type="button" onClick={()=>{
                 
                 createAccount(id,{
                     typeAccount,
                     balance,
-                    keyTrans:transPassword,
+                    employer:clientType,
                     banks:[
                         {
                             bankName:bank,
@@ -54,10 +53,11 @@ export default function RegisterBank(){
                     }
                 });
             }}>CADASTRAR</button>
-            <button type="button" onClick={()=>{
-                console.log(getNumberBank(bank))
-              
-            }}>aaaa</button>
+            <S.Links>
+                    <Link to={`/homepageclient/${id}`}>
+                        <span>VOLTAR</span>
+                    </Link>
+            </S.Links>
         </S.Container>
     )
 }

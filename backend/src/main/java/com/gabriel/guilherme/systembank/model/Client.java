@@ -18,7 +18,7 @@ public class Client {
 	private String rg;
 	private String cpf;
 	private String password;
-	private IsEmployer employer;
+
 	private List<Account> accounts = new ArrayList<Account>();
 	public Client() {
 		
@@ -87,15 +87,6 @@ public class Client {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-
-	public IsEmployer getEmployer() {
-		return employer;
-	}
-
-	public void setEmployer(IsEmployer employer) {
-		this.employer = employer;
-	}
-	
 
 	public List<Account> getAccounts() {
 		return accounts;

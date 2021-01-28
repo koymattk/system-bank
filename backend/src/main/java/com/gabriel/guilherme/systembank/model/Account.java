@@ -12,6 +12,7 @@ public class Account implements Serializable {
 	private String numberAccount;
 	private String agency;
 	private double balance;
+	private IsEmployer employer;
 	private List<Extrato> extrato = new ArrayList<Extrato>();
 	private List<Bank> banks;
 	private List<KeyPix> keys = new ArrayList<KeyPix>();
@@ -19,10 +20,11 @@ public class Account implements Serializable {
 	public Account() {
 		
 	}
-	public Account(String typeAccount, String agency, double balance) {
+	public Account(String typeAccount, String agency, double balance, IsEmployer employer) {
 		this.typeAccount = typeAccount;
 		this.agency = agency;
 		this.balance = balance; 
+		this.employer = employer;
 	}
 
 	public String getTypeAccount() {
@@ -52,6 +54,21 @@ public class Account implements Serializable {
 	public double getBalance() {
 		return balance;
 	}
+
+	public IsEmployer getEmployer() {
+		return this.employer;
+	}
+
+	public void setEmployer(IsEmployer employer) {
+		this.employer = employer;
+	}
+	public void setBanks(List<Bank> banks) {
+		this.banks = banks;
+	}
+	public void setKeys(List<KeyPix> keys) {
+		this.keys = keys;
+	}
+
 	public void setBalance(double balance) {
 		this.balance = balance;
 	}
