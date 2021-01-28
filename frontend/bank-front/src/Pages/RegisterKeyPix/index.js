@@ -8,6 +8,7 @@ export default function RegisterKeyPix() {
     const {id, index,bank} = useParams();
     const[client, setClient] = useState({})
     const[keyPix, setKeyPix] = useState('');
+    const[keyPixx, setKeyPixx] = useState('');
     useEffect(()=>{
         getClient(id).then(res=>setClient(res))
         console.log(client);
@@ -16,14 +17,14 @@ export default function RegisterKeyPix() {
         <S.Container>
             <S.Inputs>
                 <span>Digite a chave PIX deseja cadastrar</span>
-                <input type="text" placeholder="CHAVE" />
+                <input type="text" placeholder="CHAVE" value={keyPixx} onChange={keyPixx=>setKeyPixx(keyPixx.target.value)} />
             </S.Inputs>
             <button type="button" onClick={()=>{
-                
+                registerKeyPix(id, index, {keypix:keyPixx}).then(res =>console.log(res.data))
             }}>CADASTRAR CHAVE</button>
             
             
-            <input type="text" defaultValue={keyPix} />
+            <input value={keyPix} />
             <button type='button' onClick={()=>{
                 createPix().then(res=>setKeyPix(res.data));
             }}>GERAR CHAVE PIX ALEATORIA</button>

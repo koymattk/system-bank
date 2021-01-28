@@ -29,7 +29,13 @@ export default function TransferPix() {
             </S.Inputs>
                 <button type='button' onClick={()=>{
                     console.log('oi')
-                   transferPix(id,index,key, value);
+                   transferPix(id,index,key, value).then(res=>{
+                       if(res.data !== 0){
+                           alert("Tranferencia feita com sucesso");
+                       }else{
+                           alert("Tranferencia não concluida");
+                       }
+                   });
                 }}>Tranferir</button>
                 <Link to={`/homepage/${id}/${bank}`}><span>VOLTAR</span></Link>
                 <CardConfirm typeAccount={dataClient.typeAccount} numberAccount={dataClient.numberAccount} agency={dataClient.agency} nome={dataClient.name} bank={dataClient.nameBank} cpf={dataClient.cpf} dateTransfer={dataClient.date}/>

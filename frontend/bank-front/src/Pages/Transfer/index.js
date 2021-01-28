@@ -41,7 +41,13 @@ export default function() {
                     index,
                     clientId:id,
                     bank:bankk
-                }).then(res=>console.log(res.data));
+                }).then(res=>{
+                    if(res.data !== 0){
+                        alert("Transferencia feita com sucesso");
+                    }else{
+                        alert("Tranferencia não concluida");
+                    }
+                });
             }}>TRANSFERIR</button>
             <Link to={`/homepage/${id}/${bank}`}>VOLTAR</Link>
         </form>

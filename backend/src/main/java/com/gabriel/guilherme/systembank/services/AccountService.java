@@ -58,7 +58,6 @@ public class AccountService implements IaccountService {
     }
 
     public Double transferPix(String clientId, String index, String keyPix, Double value){
-        
         int position =  Integer.parseInt(index);
         List<Client> clients = repository.findAll();
         Client client = repository.findById(clientId)
