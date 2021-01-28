@@ -6,6 +6,7 @@ import com.gabriel.guilherme.systembank.model.Client;
 import com.gabriel.guilherme.systembank.model.Data;
 import com.gabriel.guilherme.systembank.model.Extrato;
 import com.gabriel.guilherme.systembank.model.KeyPix;
+import com.gabriel.guilherme.systembank.model.Saque;
 import com.gabriel.guilherme.systembank.model.TransferAccount;
 
 public interface IaccountService {
@@ -15,4 +16,5 @@ public interface IaccountService {
     Data getAccountPix(String keyPix);
     List<Extrato> getExtratos(String clientId, String index);
     Double transfer(String clientId, String index, TransferAccount account);
+    Double sacar(Saque saque);
 }

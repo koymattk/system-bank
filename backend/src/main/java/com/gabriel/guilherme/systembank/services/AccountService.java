@@ -11,6 +11,7 @@ import com.gabriel.guilherme.systembank.model.Client;
 import com.gabriel.guilherme.systembank.model.Data;
 import com.gabriel.guilherme.systembank.model.Extrato;
 import com.gabriel.guilherme.systembank.model.KeyPix;
+import com.gabriel.guilherme.systembank.model.Saque;
 import com.gabriel.guilherme.systembank.model.TransferAccount;
 import com.gabriel.guilherme.systembank.repositories.ClientRepository;
 
@@ -69,7 +70,7 @@ public class AccountService implements IaccountService {
                     return 0.0;
                 }else{
                     account.setBalance(account.getBalance() - value);
-                    account.getExtrato().add(new Extrato("- R$" + value + " Data: " + new Date().toString()));
+                    account.getExtrato().add(new Extrato("Pix enviado - Data: " + new Date().toString() + " - R$" + value));
                     
                     for (Client client2 : clients) {
                         for (Account account2 : client2.getAccounts()) {
@@ -80,7 +81,7 @@ public class AccountService implements IaccountService {
                                             for (KeyPix keys : account3.getKeys()) {
                                                 if(keys.getKeypix().equals(keyPix)){
                                                     account3.setBalance(account3.getBalance() + value);
-                                                    account3.getExtrato().add(new Extrato("+ R$" + value + " Data: " + new Date().toString()));
+                                                    account3.getExtrato().add(new Extrato("Pix recebido - Data: " + new Date().toString() + " + R$" + value));
                                                     repository.save(client);
                                                     return value;
                                                 }
@@ -89,7 +90,7 @@ public class AccountService implements IaccountService {
                                     }
                                     System.out.println("cheguei ate aqui");
                                     account2.setBalance(account2.getBalance() + value);
-                                    account2.getExtrato().add(new Extrato("+ R$" + value + " Data: " + new Date().toString()));
+                                    account2.getExtrato().add(new Extrato("Pix recebido - Data: " + new Date().toString() + " + R$" + value));
                                     repository.save(client);
                                     repository.save(client2);
                                     System.out.println("cheguei ate aqui2");  
@@ -156,7 +157,7 @@ public class AccountService implements IaccountService {
                     return 0.0;
                 }else{
                     account1.setBalance(account1.getBalance() - account.getValue());
-                    account1.getExtrato().add(new Extrato("- R$" + account.getValue() + " Data: " + new Date().toString()));
+                    account1.getExtrato().add(new Extrato("Tranferencia enviada - Data: " + new Date().toString() + " - R$" + account.getValue()));
                     for (Client client2 : clients) {
                         if(client2.getCpf().equals(account.getCpf())){
                             if(client2.getId().equals(client.getId())){
@@ -167,23 +168,24 @@ public class AccountService implements IaccountService {
                                     && account3.getTypeAccount().equals(account.getTypeAccount())){
                                         System.out.println("olaaaaaaaaaaaa");
                                         account3.setBalance(account3.getBalance() + account.getValue());
-                                        account3.getExtrato().add(new Extrato("+ R$" + account.getValue() + " Data: " + new Date().toString()));
+                                        account3.getExtrato().add(new Extrato("Deposito recebido - Data: " + new Date().toString() + " + R$" + account.getValue()));
                                         repository.save(client);
                                         return account.getValue();
                                     }
                                         
-                            }
-                            for (Account account2 : client2.getAccounts()) {
-                                if(account2.getAgency().equals(account.getAgency())
-                                && account2.getNumberAccount().equals(account.getNumberAccount())
-                                && account2.getTypeAccount().equals(account.getTypeAccount())){
-                                    for (Bank bank : account2.getBanks()) {
-                                        if(bank.getBankName().equals(account.getBank())){
-                                            account2.setBalance(account2.getBalance() + account.getValue());
-                                            account2.getExtrato().add(new Extrato("+ R$" + account.getValue() + " Data: " + new Date().toString()));
-                                            repository.save(client2);
-                                            repository.save(client);
-                                            return account.getValue();
+                                }
+                                for (Account account2 : client2.getAccounts()) {
+                                    if(account2.getAgency().equals(account.getAgency())
+                                    && account2.getNumberAccount().equals(account.getNumberAccount())
+                                    && account2.getTypeAccount().equals(account.getTypeAccount())){
+                                        for (Bank bank : account2.getBanks()) {
+                                            if(bank.getBankName().equals(account.getBank())){
+                                                account2.setBalance(account2.getBalance() + account.getValue());
+                                                account2.getExtrato().add(new Extrato("Deposito recebido - Data: " + new Date().toString() + " + R$" + account.getValue()));
+                                                repository.save(client2);
+                                                repository.save(client);
+                                                return account.getValue();
+                                            }
                                         }
                                     }
                                 }
@@ -192,10 +194,28 @@ public class AccountService implements IaccountService {
                     }
                 }
             }
+            
+        } 
+        return 0.0;
+    }
+
+    public Double sacar(Saque saque){
+        Client client = repository.findById(saque.getClientId())
+        .orElseThrow(()-> new IllegalArgumentException("Client not found"));
+        for (Account account : client.getAccounts()) {
+            if(saque.getIndex() == client.getAccounts().indexOf(account)){
+                if(account.getBalance() < saque.getValue()){
+                    return 0.0;
+                }else{
+                    account.setBalance(account.getBalance() - saque.getValue());
+                    account.getExtrato().add(new Extrato("Saque realizado - Data: " + new Date().toString() + " - R$" + saque.getValue()));
+                    repository.save(client);
+                    return saque.getValue();
+                }
+            }
         }
-        
-    } 
-    return 0.0;
-}
+
+        return null;
+    }
 
 }

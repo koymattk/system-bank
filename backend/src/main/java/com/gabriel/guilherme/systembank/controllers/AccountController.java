@@ -5,6 +5,7 @@ import java.util.List;
 import com.gabriel.guilherme.systembank.model.Client;
 import com.gabriel.guilherme.systembank.model.Data;
 import com.gabriel.guilherme.systembank.model.KeyPix;
+import com.gabriel.guilherme.systembank.model.Saque;
 import com.gabriel.guilherme.systembank.model.TransferAccount;
 import com.gabriel.guilherme.systembank.model.Extrato;
 
@@ -41,6 +42,10 @@ public class AccountController {
     @PutMapping(value="/transfer/{clientId}/{index}")
     public Double transfer(@PathVariable String clientId, @PathVariable String index, @RequestBody TransferAccount account){
         return service.transfer(clientId, index, account);
+    }
+    @PutMapping(value="/sacar")
+    public Double sacar(@RequestBody Saque saque) {
+        return service.sacar(saque);
     }
     @GetMapping("/{keyPix}")
     public Data getAccountPix(@PathVariable String keyPix){
