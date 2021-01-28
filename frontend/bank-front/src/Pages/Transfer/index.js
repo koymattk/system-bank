@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { transfer } from '../../Services/api';
 
-export default function() {
+export default function Tranfer() {
     const {id, index, bank} = useParams();
     const[keyTrans, setKeyTrans] = useState('');
     const[bankk, setBank] = useState('');

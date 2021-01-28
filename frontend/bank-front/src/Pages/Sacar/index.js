@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { sacar } from '../../Services/api';
 
-export default function() {
+export default function Sacar() {
     const {id, index, bank} = useParams();
     const[value,setValue] = useState(0);
     return(

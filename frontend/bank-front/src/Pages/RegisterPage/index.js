@@ -53,7 +53,7 @@ export default function RegisterPage() {
                 <button type="button" onClick={()=>{
                     if(validate(login,password,cPassword,cpf,rg, tell, email)){
                         setClient({name,tell,login,email,rg,cpf,password,accounts:[]})
-                        console.log(client);
+                        
                     }
                     else{
                         console.log("Dados invalidos");

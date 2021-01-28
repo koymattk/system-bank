@@ -33,10 +33,18 @@ export default function HomePageC({balance, typeAccount,bank, index, id}){
                 </span>
             </S.Saldo>
             <S.Links>
-                    <Link to={`/transferpix/${id}/${index}/${bank}`}><span>TRANSFERIR VIA PIX</span></Link>
+                    <Link onClick={()=>{
+                        if(typeAccount === "salario"){
+                            alert("CONTA SALARIO PODE APENAS SACAR");
+                        }
+                    }} to={typeAccount !== "salario" ?`/transferpix/${id}/${index}/${bank}` : `/homepage/${id}/${bank}`}><span>TRANSFERIR VIA PIX</span></Link>
             </S.Links>
             <S.Links>
-                    <Link to={`/transfer/${id}/${index}/${bank}`}><span>TRANSFERIR</span></Link>
+                    <Link onClick={()=>{
+                        if(typeAccount === "salario"){
+                            alert("CONTA SALARIO PODE APENAS SACAR");
+                        }
+                    }} to={typeAccount !== "salario" ? `/transfer/${id}/${index}/${bank}`:`/homepage/${id}/${bank}`}><span>TRANSFERIR</span></Link>
             </S.Links>
             <S.Links>
                     <Link to={`/sacar/${id}/${index}/${bank}`}><span>SACAR</span></Link>

@@ -6,13 +6,8 @@ import { createPix, registerKeyPix, getClient } from '../../Services/api';
 
 export default function RegisterKeyPix() {
     const {id, index,bank} = useParams();
-    const[client, setClient] = useState({})
     const[keyPix, setKeyPix] = useState('');
     const[keyPixx, setKeyPixx] = useState('');
-    useEffect(()=>{
-        getClient(id).then(res=>setClient(res))
-        console.log(client);
-    },[])
     return(
         <S.Container>
             <S.Inputs>
