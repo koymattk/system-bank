@@ -5,7 +5,7 @@ import { createPix, registerKeyPix, getClient } from '../../Services/api';
 
 
 export default function RegisterKeyPix() {
-    const {id, index} = useParams();
+    const {id, index,bank} = useParams();
     const[client, setClient] = useState({})
     const[keyPix, setKeyPix] = useState('');
     useEffect(()=>{
@@ -18,17 +18,22 @@ export default function RegisterKeyPix() {
                 <span>Digite a chave PIX deseja cadastrar</span>
                 <input type="text" placeholder="CHAVE" />
             </S.Inputs>
-            <S.Links>
-                <Link to="/homepage"><span>CONFIRMAR</span></Link>
-            </S.Links>
+            <button type="button" onClick={()=>{
+                
+            }}>CADASTRAR CHAVE</button>
+            
+            
+            <input type="text" defaultValue={keyPix} />
             <button type='button' onClick={()=>{
                 createPix().then(res=>setKeyPix(res.data));
             }}>GERAR CHAVE PIX ALEATORIA</button>
-            <input type="text" defaultValue={keyPix} />
             <button type="button" onClick={()=>{
                 registerKeyPix(id, index, {keypix:keyPix}).then(res =>console.log(res.data))
                 console.log("olá")
             }}>CADASTRAR CHAVE ALEATORIA</button>
+            <S.Links>
+                <Link to={`/homepage/${id}/${bank}`}><span>VOLTAR</span></Link>
+            </S.Links>
         </S.Container>
     )
 }

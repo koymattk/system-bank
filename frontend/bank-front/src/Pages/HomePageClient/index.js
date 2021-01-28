@@ -1,6 +1,7 @@
 import React from 'react';
 import * as S from './styles'
 import CardBankClient from '../../Components/CardBankClient'
+import { Link } from 'react-router-dom';
 
 export default function HomePageClient() {
     return(
@@ -18,6 +19,7 @@ export default function HomePageClient() {
                 <div>
                     <CardBankClient bank="Inter"/>
                 </div>
+                <Link to={'/'}>SAIR</Link>
             </S.ContentHomePageClient>
         </S.ContainerHomePageClient>
     );

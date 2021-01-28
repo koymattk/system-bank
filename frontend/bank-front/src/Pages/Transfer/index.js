@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { transfer } from '../../Services/api';
 
 export default function() {
-    const {id, index} = useParams();
+    const {id, index, bank} = useParams();
     const[keyTrans, setKeyTrans] = useState('');
-    const[bank, setBank] = useState('');
+    const[bankk, setBank] = useState('');
     const[agency, setAgency] =useState('');
     const[numberAccount, setNumberAccount] = useState('');
     const[cpf, setCpf] = useState('');
@@ -31,10 +31,9 @@ export default function() {
             </select>
             <label>VALOR QUE DESEJA TRANFERIR</label>
             <input type="number" placeholder="R$" value={value} onChange={value => setValue(value.target.value)} />
-        </form>
             <button  type="button" onClick={()=>{
                 transfer(id,index,{
-                    bank,
+                    bankk,
                     agency,
                     numberAccount,
                     cpf,
@@ -42,6 +41,9 @@ export default function() {
                     typeAccount
                 }).then(res=>console.log(res.data));
             }}>TRANSFERIR</button>
+            <Link to={`/homepage/${id}/${bank}`}>VOLTAR</Link>
+        </form>
+            
         </div>
         
         

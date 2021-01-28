@@ -20,10 +20,10 @@ export default function Routes (){
                 <Route path="/homepageclient/:id" exact component={HomePageClient} />
                 <Route path="/registerbank/:bank/:id" exact component={RegisterBank} />
                 <Route path="/homepage/:id/:bank" exact component={HomePage} />                
-                <Route path="/transferpix/:id/:index" exact component={TransferPix} />
-                <Route path="/registerkeypix/:id/:index" exact component={RegisterKeyPix} />
-                <Route path="/transfer/:id/:index" exact component={Transfer}/>
-                <Route path="/sacar/:id/:index" exact component={Sacar}/>
+                <Route path="/transferpix/:id/:index/:bank" exact component={TransferPix} />
+                <Route path="/registerkeypix/:id/:index/:bank" exact component={RegisterKeyPix} />
+                <Route path="/transfer/:id/:index/:bank" exact component={Transfer}/>
+                <Route path="/sacar/:id/:index/:bank" exact component={Sacar}/>
             </Switch>
         </BrowserRouter>
     )
