@@ -71,10 +71,8 @@ export const transferPix = async(clientId, index, keyPix, value) => {
     console.log(index);
     return axios.put(`http://localhost:8080/account/transferpix/${clientId}/${index}/${keyPix}/${value}`);
 }
-export const transfer = async (clientId, index, account) =>{
-    console.log(clientId,index)
-    console.log(account);
-    return axios.put(`http://localhost:8080/account/transfer/${clientId}/${index}`,account);
+export const transfer = async (account) =>{
+    return axios.put(`http://localhost:8080/account/transfer`,account);
 }
 export const getExtrato = async (id,index) => {
     return axios.get(`http://localhost:8080/account/extrato/${id}/${index}`);

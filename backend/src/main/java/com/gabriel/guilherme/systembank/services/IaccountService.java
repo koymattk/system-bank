@@ -15,6 +15,6 @@ public interface IaccountService {
     Double transferPix (String clientId,String index, String keyPix, Double value);
     Data getAccountPix(String keyPix);
     List<Extrato> getExtratos(String clientId, String index);
-    Double transfer(String clientId, String index, TransferAccount account);
+    Double transfer(TransferAccount account);
     Double sacar(Saque saque);
 }

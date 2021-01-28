@@ -7,19 +7,23 @@ public class TransferAccount {
     private String typeAccount;
     private String cpf;
     private Double Value;
+    private String clientId;
+    private int index;
 
 
     public TransferAccount() {
     }
 
 
-    public TransferAccount(String bank, String agency, String numberAccount, String typeAccount, String cpf, Double Value) {
+    public TransferAccount(String bank, String agency, String numberAccount, String typeAccount, String cpf, Double Value, String clientId, int index) {
         this.bank = bank;
         this.agency = agency;
         this.numberAccount = numberAccount;
         this.typeAccount = typeAccount;
         this.cpf = cpf;
         this.Value = Value;
+        this.clientId = clientId;
+        this.index = index;
     }
     
 
@@ -70,6 +74,22 @@ public class TransferAccount {
 
     public void setValue(Double Value) {
         this.Value = Value;
+    }
+
+    public String getClientId() {
+        return this.clientId;
+    }
+
+    public void setClientId(String clientId) {
+        this.clientId = clientId;
+    }
+
+    public int getIndex() {
+        return this.index;
+    }
+
+    public void setIndex(int index) {
+        this.index = index;
     }
 
 }

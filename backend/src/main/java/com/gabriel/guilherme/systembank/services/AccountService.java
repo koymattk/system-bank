@@ -146,13 +146,13 @@ public class AccountService implements IaccountService {
 
     
 
-    public Double transfer(String clientId, String index, TransferAccount account){
-        int position =  Integer.parseInt(index);
+    public Double transfer(TransferAccount account){
+        
         List<Client> clients = repository.findAll();
-        Client client = repository.findById(clientId)
+        Client client = repository.findById(account.getClientId())
         .orElseThrow(()-> new IllegalArgumentException("Client not found"));
         for (Account account1 : client.getAccounts()) {
-            if(position == client.getAccounts().indexOf(account1)){
+            if(account.getIndex() == client.getAccounts().indexOf(account1)){
                 if(account1.getBalance() < account.getValue()){
                     return 0.0;
                 }else{

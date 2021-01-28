@@ -39,9 +39,9 @@ public class AccountController {
     public Double transferPix(@PathVariable String clientId, @PathVariable String index, @PathVariable String keyPix, @PathVariable Double value){
         return  service.transferPix(clientId, index, keyPix, value);
     }
-    @PutMapping(value="/transfer/{clientId}/{index}")
-    public Double transfer(@PathVariable String clientId, @PathVariable String index, @RequestBody TransferAccount account){
-        return service.transfer(clientId, index, account);
+    @PutMapping(value="/transfer")
+    public Double transfer(@RequestBody TransferAccount account){
+        return service.transfer(account);
     }
     @PutMapping(value="/sacar")
     public Double sacar(@RequestBody Saque saque) {

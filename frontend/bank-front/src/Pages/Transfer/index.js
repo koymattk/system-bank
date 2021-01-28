@@ -17,7 +17,7 @@ export default function() {
             <label>SENHA DE TRANSFERENCIA</label>
             <input type="password" value={keyTrans} onChange={key => setKeyTrans(key.target.value)}/>
             <label>BANCO</label>
-            <input type="text" value={bank} onChange={bank => setBank(bank.target.value)}/>
+            <input type="text" value={bankk} onChange={bank => setBank(bank.target.value)}/>
             <label>AGENCIA</label>
             <input type="text" value={agency} onChange={agency => setAgency(agency.target.value)}/>
             <label>NUMERO DA CONTA</label>
@@ -32,13 +32,15 @@ export default function() {
             <label>VALOR QUE DESEJA TRANFERIR</label>
             <input type="number" placeholder="R$" value={value} onChange={value => setValue(value.target.value)} />
             <button  type="button" onClick={()=>{
-                transfer(id,index,{
-                    bankk,
+                transfer({
                     agency,
                     numberAccount,
                     cpf,
                     value,
-                    typeAccount
+                    typeAccount,
+                    index,
+                    clientId:id,
+                    bank:bankk
                 }).then(res=>console.log(res.data));
             }}>TRANSFERIR</button>
             <Link to={`/homepage/${id}/${bank}`}>VOLTAR</Link>
