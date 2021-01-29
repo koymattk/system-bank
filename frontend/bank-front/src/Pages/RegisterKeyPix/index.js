@@ -18,7 +18,14 @@ export default function RegisterKeyPix() {
                 if(keyPixx === ''){
                     return;
                 }
-                registerKeyPix(id, index, {keypix:keyPixx}).then(res =>console.log(res.data))
+                registerKeyPix(id, index, {keypix:keyPixx}).then(res=>{
+                    console.log(res.data)
+                    if(res.data != ''){
+                        alert("CHAVE CADASTRADA COM SUCESSO");
+                    }else{
+                        alert("CHAVE NÃO CADASTRADA");
+                    }
+                })
             }}>CADASTRAR CHAVE</button>
             
             
@@ -30,7 +37,13 @@ export default function RegisterKeyPix() {
                 if(keyPix === ''){
                     return;
                 }
-                registerKeyPix(id, index, {keypix:keyPix}).then(res =>console.log(res.data))
+                registerKeyPix(id, index, {keypix:keyPix}).then(res=>{
+                    if(res.data != ''){
+                        alert("CHAVE CADASTRADA COM SUCESSO");
+                    }else{
+                        alert("CHAVE NÃO CADASTRADA");
+                    }
+                })
                 console.log("olá")
             }}>CADASTRAR CHAVE ALEATORIA</button>
             <S.Links>
