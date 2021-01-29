@@ -10,6 +10,7 @@ import HomePageClient from '../Pages/HomePageClient'
 import RegisterBank from '../../src/Pages/RegisterBank'
 import Transfer from '../Pages/Transfer'; 
 import Sacar from '../Pages/Sacar';
+import HomePageAdmin from '../Pages/HomePageAdmin';
 
 export default function Routes (){
     return(
@@ -24,6 +25,7 @@ export default function Routes (){
                 <Route path="/registerkeypix/:id/:index/:bank" exact component={RegisterKeyPix} />
                 <Route path="/transfer/:id/:index/:bank" exact component={Transfer}/>
                 <Route path="/sacar/:id/:index/:bank" exact component={Sacar}/>
+                <Route path="/adminpage" exact component={HomePageAdmin}/>
             </Switch>
         </BrowserRouter>
     )

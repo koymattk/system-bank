@@ -38,7 +38,7 @@ export default function LoginPage () {
                     </Link>
                 </S.Links>
             </S.Inputs>
-            <button onClick={()=>{validateLogin(login,password)}} type="button">aaaaaa</button>
+            <Link to={'/adminpage'} >admin</Link>
         </S.Container>
     )
 }
