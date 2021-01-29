@@ -24,7 +24,7 @@ export default function Tranfer() {
             <input type="text" value={numberAccount} onChange={number => setNumberAccount(number.target.value)}/>
             <label>CPF</label>
             <input type="text" value={cpf} onChange={cpf => setCpf(cpf.target.value)}/>
-            <select value={typeAccount} onChange={value => setTypeAccount(parseFloat(value.target.value))}>
+            <select value={typeAccount} onChange={value => setTypeAccount((value.target.value))}>
                     <option value={'corrente'}>CONTA CORRENTE</option>
                     <option value={'poupanca'}>POUPANÇA</option>
                     <option value={'salario'}>CONTA SALARIO</option>
