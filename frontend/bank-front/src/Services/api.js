@@ -80,3 +80,11 @@ export const getExtrato = async (id,index) => {
 export const sacar = async (saque) =>{
     return axios.put("http://localhost:8080/account/sacar", saque);
 }
+
+export const ammountBank = async(bankName) => {
+    return axios.get(`http://localhost:8080/bank/amount/${bankName}`);
+}
+
+export const ammountBankAgency = async (bankName, agency) => {
+    return axios.get(`http://localhost:8080/bank/amount/${bankName}/${agency}`);
+}
