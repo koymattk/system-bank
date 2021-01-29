@@ -45,11 +45,26 @@ public class AccountService implements IaccountService {
         
         Client client = repository.findById(clientId)
         .orElseThrow(()-> new IllegalArgumentException("Client not found"));
-
+        List<Client> clients =repository.findAll();
         List<Account> newAccounts = new ArrayList<Account>();
         for (Account account : client.getAccounts()) {
             if(position == client.getAccounts().indexOf(account)){
-                account.getKeys().add(keyPix);
+                if(account.getKeys().size()<5){
+                    
+                    for(Client client1 : clients){
+                        for(Account account1 :client1.getAccounts()){
+                            for(KeyPix pix : account1.getKeys()){
+                                if(pix.getKeypix().equals(keyPix.getKeypix())){
+                                    return null;
+                                }
+                            }
+                        }
+                    }
+                    account.getKeys().add(keyPix);
+                }else{
+                    return null;
+                }
+                
             }
             newAccounts.add(account);
         }

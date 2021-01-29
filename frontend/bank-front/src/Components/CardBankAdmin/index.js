@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { ammountBank, ammountBankAgency} from '../../Services/api';
 
 
@@ -22,6 +23,7 @@ export default function CardBankAdmin({name}) {
             }} >MONTANTE AGENCIA</button>
            <input type="text" placeholder="Agencia" value={agency} onChange={agency=>setAgency(agency.target.value)}/>
            <span>Montante Agencia: R${ammountAgency}</span>
+           
         </div>
     );
 } 

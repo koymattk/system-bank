@@ -15,6 +15,9 @@ export default function RegisterKeyPix() {
                 <input type="text" placeholder="CHAVE" value={keyPixx} onChange={keyPixx=>setKeyPixx(keyPixx.target.value)} />
             </S.Inputs>
             <button type="button" onClick={()=>{
+                if(keyPixx === ''){
+                    return;
+                }
                 registerKeyPix(id, index, {keypix:keyPixx}).then(res =>console.log(res.data))
             }}>CADASTRAR CHAVE</button>
             
@@ -24,6 +27,9 @@ export default function RegisterKeyPix() {
                 createPix().then(res=>setKeyPix(res.data));
             }}>GERAR CHAVE PIX ALEATORIA</button>
             <button type="button" onClick={()=>{
+                if(keyPix === ''){
+                    return;
+                }
                 registerKeyPix(id, index, {keypix:keyPix}).then(res =>console.log(res.data))
                 console.log("olá")
             }}>CADASTRAR CHAVE ALEATORIA</button>
