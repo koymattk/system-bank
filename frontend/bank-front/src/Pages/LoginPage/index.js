@@ -38,7 +38,11 @@ export default function LoginPage () {
                     </Link>
                 </S.Links>
             </S.Inputs>
-            <Link to={'/adminpage'} >admin</Link>
+            <S.Inputs>
+            <S.Links>
+            <Link to={'/adminpage'} >ADMIN</Link>
+            </S.Links>
+            </S.Inputs>
         </S.Container>
     )
 }

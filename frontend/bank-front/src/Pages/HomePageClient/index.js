@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 
 export default function HomePageClient() {
     return(
+        <>
         <S.ContainerHomePageClient>
             <S.ContentHomePageClient>
                 <div>
@@ -19,9 +20,12 @@ export default function HomePageClient() {
                 <div>
                     <CardBankClient bank="Inter"/>
                 </div>
-                <Link to={'/'}>SAIR</Link>
             </S.ContentHomePageClient>
         </S.ContainerHomePageClient>
+            <S.AlignButton>
+                <Link to={'/'}>SAIR</Link>
+            </S.AlignButton>
+        </>
     );
 
 }

@@ -10,3 +10,9 @@ export const ContentHomePageClient = styled.div`
     display: flex;
     justify-content: space-between;
 `
+export const AlignButton = styled.div`
+    margin-left: 50%;
+    margin-top: 20px;
+
+
+`
