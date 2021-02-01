@@ -22,9 +22,9 @@ export default function HomePageClient() {
                 </div>
             </S.ContentHomePageClient>
         </S.ContainerHomePageClient>
-            <S.AlignButton>
+            <S.Links>
                 <Link to={'/'}>SAIR</Link>
-            </S.AlignButton>
+            </S.Links>
         </>
     );
 

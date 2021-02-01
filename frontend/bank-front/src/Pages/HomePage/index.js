@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import HomePageC from './HomePageC';
 import { getClient } from '../../Services/api';
 import { Link, useParams } from 'react-router-dom';
+import * as S from './styles'
+
 export default function HomePage() {
     const {id, bank} = useParams();
     const[accounts, setAccount] = useState([])
@@ -16,7 +18,7 @@ export default function HomePage() {
     },[])
     return(
       
-        <>
+        <S.Links>
           <Link to={`/homepageclient/${id}`}>VOLTAR</Link>
           {
             accounts.map(account => {
@@ -24,7 +26,7 @@ export default function HomePage() {
             })
            
           }
-        </>
+        </S.Links>
         
     )
 }

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import * as S from "./style"
 import { ammountBank, ammountBankAgency} from '../../Services/api';
 
 
@@ -9,7 +9,7 @@ export default function CardBankAdmin({name}) {
     const[ammountAgency, setAmmountAgency] = useState(0);
     const[agency , setAgency] = useState('');
     return ( 
-        <div>
+        <S.Container>
             <h3>{name}</h3>
            <button type="button" onClick={()=>{
                ammountBank(name).then(res=>setAmmount(res.data));
@@ -24,6 +24,6 @@ export default function CardBankAdmin({name}) {
            <input type="text" placeholder="Agencia" value={agency} onChange={agency=>setAgency(agency.target.value)}/>
            <span>Montante Agencia: R${ammountAgency}</span>
            
-        </div>
+        </S.Container>
     );
 } 
