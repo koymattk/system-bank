@@ -17,9 +17,8 @@ ReactJS
 
 Como rodar a aplicação: 
 
-Run archive;  SystemBankApplication.java 
+Rode o arquivo:  SystemBankApplication.java 
 
-Npm install na pasta Front-end
 Npm install na pasta Bank-Front
 
 e por fim, Npm start na pasta Bank-Front 
