@@ -18,15 +18,18 @@ export default function HomePage() {
     },[])
     return(
       
+        <>
         <S.Links>
           <Link to={`/homepageclient/${id}`}>VOLTAR</Link>
+        </S.Links>
           {
             accounts.map(account => {
             return account.banks[0].bankName === bank ? <HomePageC id={id} index={accounts.indexOf(account)} balance={account.balance}typeAccount={account.typeAccount} bank={account.banks[0].bankName}/> : <></>
             })
            
           }
-        </S.Links>
+        </>
+        
         
     )
 }
