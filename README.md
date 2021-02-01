@@ -19,7 +19,7 @@ Como rodar a aplicação:
 
 Run archive;  SystemBankApplication.java 
 
-Npm install na basta Front-end
+Npm install na pasta Front-end
 Npm install na pasta Bank-Front
 
 e por fim, Npm start na pasta Bank-Front 
